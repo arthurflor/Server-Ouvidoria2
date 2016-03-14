@@ -76,15 +76,12 @@
                         <li class="active"><a href="#">Contato</a></li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
-                        <li><?php
-                            if (isset($_SESSION['CODSIST_usuario_esta_logado'])) {
-                                if (strcmp($_SESSION['CODSIST_usuario_logado'], "logado_com_sucesso") == 0) {
-                                    echo '<a href="../logout.php?CODSIST_sair=true">Logout</a>';
-                                } else {
-                                    echo '<a href="../login/">Login</a>';
-                                }
+                        <li>
+                            <?php
+                            if (!isset($_SESSION['CODSIST_usuario'])) {
+                                echo '<a href="../login">Login</a>';
                             } else {
-                                echo '<a href="../login/">Login</a>';
+                                echo '<a href="../logout.php?CODSIST_sair=true">Logout</a>';
                             }
                             ?>
                         </li>

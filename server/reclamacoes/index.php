@@ -77,14 +77,10 @@ session_start(); //inicia sessão, para verificação de login
                     <ul class="nav navbar-nav navbar-right">
                         <li>
                             <?php
-                            if (isset($_SESSION['CODSIST_usuario_esta_logado'])) {
-                                if (strcmp($_SESSION['CODSIST_usuario_logado'], "logado_com_sucesso") == 0) {
-                                    echo '<a href="../logout.php?CODSIST_sair=true">Logout</a>';
-                                } else {
-                                    echo '<a href="../login/">Login</a>';
-                                }
+                            if (!isset($_SESSION['CODSIST_usuario'])) {
+                                echo '<a href="../login">Login</a>';
                             } else {
-                                echo '<a href="../login/">Login</a>';
+                                echo '<a href="../logout.php?CODSIST_sair=true">Logout</a>';
                             }
                             ?>
                         </li>
@@ -106,17 +102,14 @@ session_start(); //inicia sessão, para verificação de login
                 <!-- centro da página (horizontalmente falando) -->
                 <div class="col-sm-8 text-left">
                     <?php
-                    if (isset($_SESSION['CODSIST_usuario_esta_logado'])) {
-                        if (strcmp($_SESSION['CODSIST_usuario_logado'], "logado_com_sucesso") == 0) {
-                            echo '
-                            <h1>Relatórios</h1>
-                            <h3>Escolha um tipo de filtro para poder listar as reclamações</h3>
-                            ';
-                        } else {
-                            echo '<h2>Você não está logado, entre no sistema para poder visualizar as reclamações.</h2>';
-                        }
+                    if (!isset($_SESSION['CODSIST_usuario'])) {
+                        echo 
+                            '<script language="javascript" type="text/javascript"> 
+                                alert("Para visualizar as reclamações é necessário fazer o login!");
+				window.location.href="../login";
+                            </script>';
                     } else {
-                        echo '<h2>Você não está logado, entre no sistema para poder visualizar as reclamações.</h2>';
+                        //mostra reclamações
                     }
                     ?>
                 </div>

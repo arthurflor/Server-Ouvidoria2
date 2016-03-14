@@ -77,14 +77,10 @@
                     <ul class="nav navbar-nav navbar-right">
                         <li>
                             <?php
-                            if (isset($_SESSION['CODSIST_usuario_esta_logado'])) {
-                                if (strcmp($_SESSION['CODSIST_usuario_logado'], "logado_com_sucesso") == 0) {
-                                    echo '<a href="../logout.php?CODSIST_sair=true">Logout</a>';
-                                } else {
-                                    echo '<a href="../login/">Login</a>';
-                                }
+                            if (!isset($_SESSION['CODSIST_usuario'])) {
+                                echo '<a href="../login">Login</a>';
                             } else {
-                                echo '<a href="../login/">Login</a>';
+                                echo '<a href="../logout.php?CODSIST_sair=true">Logout</a>';
                             }
                             ?>
                         </li>
@@ -105,11 +101,17 @@
                 
                 <!-- centro da página (horizontalmente falando) -->
                 <div class="col-sm-8 text-left"> 
-                    <h1>Welcome</h1>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                    <hr>
-                    <h3>Test</h3>
-                    <p>Lorem ipsum...</p>
+                    <?php
+                    if (!isset($_SESSION['CODSIST_usuario'])) {
+                        echo 
+                            '<script language="javascript" type="text/javascript"> 
+                                alert("Para gerar relatórios é necessário fazer o login!");
+				window.location.href="../login";
+                            </script>';
+                    } else {
+                        //mostra relatórios
+                    }
+                    ?>
                 </div>
                 
                 <!-- barra da direita -->
