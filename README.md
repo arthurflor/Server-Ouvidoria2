@@ -3,7 +3,7 @@ Aqui ficarão códigos de script de banco de dados, web service, além da aplica
 
 # Tarefas a serem executadas:
 Março:<br>
-[ ] Banco de dados; - Iago e Leylane<br>
+[x] Banco de dados; - Iago e Leylane<br>
 [ ] Web Service (para recebimento das informações de uma reclamação); - Iago e Leylane<br><br>
 Abril:<br>
 [ ] Login; - Iago<br>
