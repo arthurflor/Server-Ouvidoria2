@@ -1,5 +1,5 @@
 <?php
-    session_start(); //inicia sessão, para verificação de login
+session_start(); //inicia sessão, para verificação de login
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -56,7 +56,7 @@
                 <img src="images/logo.png"/>
             </div>
         </div>
-        
+
         <!-- Barra de menu -->
         <nav class="navbar navbar-inverse">
             <div class="container-fluid">
@@ -75,19 +75,18 @@
                         <li><a href="contato/">Contato</a></li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a href="#"> 
-                                <?php
-                                if (isset($_SESSION['CODSIST_usuario_esta_logado'])) {
-                                    if (strcmp($_SESSION['CODSIST_usuario_logado'], "logado_com_sucesso") == 0) {
-                                        echo 'Logout';
-                                    } else {
-                                        echo 'Login';
-                                    }
+                        <li>
+                            <?php
+                            if (isset($_SESSION['CODSIST_usuario_esta_logado'])) {
+                                if (strcmp($_SESSION['CODSIST_usuario_logado'], "logado_com_sucesso") == 0) {
+                                    echo '<a href="logout.php?CODSIST_sair=true">Logout</a>';
                                 } else {
-                                    echo 'Login';
+                                    echo '<a href="login/">Login</a>';
                                 }
-                                ?>
-                            </a>
+                            } else {
+                                echo '<a href="login/">Login</a>';
+                            }
+                            ?>
                         </li>
                     </ul>
                 </div>
@@ -96,14 +95,14 @@
 
         <div class="container-fluid text-center">    
             <div class="row content">
-                
+
                 <!-- barra da esquerda -->
                 <div class="col-sm-2 sidenav">
                     <p><a href="#">Link</a></p>
                     <p><a href="#">Link</a></p>
                     <p><a href="#">Link</a></p>
                 </div>
-                
+
                 <!-- centro da página (horizontalmente falando) -->
                 <div class="col-sm-8 text-left"> 
                     <h1>Welcome</h1>
@@ -112,7 +111,7 @@
                     <h3>Test</h3>
                     <p>Lorem ipsum...</p>
                 </div>
-                
+
                 <!-- barra da direita -->
                 <div class="col-sm-2 sidenav">
                     <div class="well">

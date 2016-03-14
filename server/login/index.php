@@ -1,12 +1,11 @@
 <?php
-    session_start(); //inicia sessão, para verificação de login
+session_start(); //inicia sessão, para verificação de login
 ?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        
-        <!-- página do contato -->
-        <title>Contato - Ouvidoria 2.0</title>
+        <!-- página de relatórios -->
+        <title>Relatórios - Ouvidoria 2.0</title>
 
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -57,7 +56,7 @@
                 <img src="../images/logo.png"/>
             </div>
         </div>
-        
+
         <!-- Barra de menu -->
         <nav class="navbar navbar-inverse">
             <div class="container-fluid">
@@ -72,11 +71,11 @@
                     <ul class="nav navbar-nav">
                         <li><a href="../">Início</a></li>
                         <li><a href="../reclamacoes/">Reclamações</a></li>
-                        <li><a href="../relatorios/">Relatórios</a></li>
-                        <li class="active"><a href="#">Contato</a></li>
+                        <li><a href="#">Relatórios</a></li>
+                        <li><a href="../contato/">Contato</a></li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
-                        <li><?php
+                        <li class="active"><?php
                             if (isset($_SESSION['CODSIST_usuario_esta_logado'])) {
                                 if (strcmp($_SESSION['CODSIST_usuario_logado'], "logado_com_sucesso") == 0) {
                                     echo '<a href="../logout.php?CODSIST_sair=true">Logout</a>';
@@ -95,23 +94,71 @@
 
         <div class="container-fluid text-center">    
             <div class="row content">
-                
+
                 <!-- barra da esquerda -->
                 <div class="col-sm-2 sidenav">
                     <p><a href="#">Link</a></p>
                     <p><a href="#">Link</a></p>
                     <p><a href="#">Link</a></p>
                 </div>
-                
+
                 <!-- centro da página (horizontalmente falando) -->
                 <div class="col-sm-8 text-left"> 
-                    <h1>Welcome</h1>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                    <hr>
-                    <h3>Test</h3>
-                    <p>Lorem ipsum...</p>
+                    <?php
+                    if (isset($_SESSION['CODSIST_usuario_esta_logado'])) {
+                        if (strcmp($_SESSION['CODSIST_usuario_logado'], "logado_com_sucesso") == 0) {
+                            echo '<h1>Você já está logado!</h1>';
+                        } else {
+                            echo '
+                                <h2>Preencha com os dados do seu login:</h2>
+                                <form class="form-horizontal" role="form" method="POST" action="autenticacao.php">
+                                    <div class="form-group">
+		                        <label class="control-label col-sm-2" for="username">Login:</label>
+		                        <div class="col-sm-9">
+		                            <input class="form-control" id="login_username" placeholder="Digite o seu Login" name="login_username">
+		                        </div>
+		                    </div>
+		                    <div class="form-group">
+		                        <label class="control-label col-sm-2" for="password">Senha:</label>
+		                        <div class="col-sm-9"> 
+		                            <input type="password" class="form-control" id="login_password" placeholder="Digite a sua Senha" name="login_password">
+		                        </div>
+		                    </div>
+                                    <div class="form-group"> 
+                                        <div class="col-sm-offset-2 col-sm-2">
+                                            <button type="submit" class="btn btn-primary">Entrar</button>
+                                        </div>
+		                    </div>
+                                </form>
+                            ';
+                        }
+                    } else {
+                        echo '
+                                <h2>Preencha com os dados do seu login:</h2>
+                                <form class="form-horizontal" role="form" method="POST" action="autenticacao.php">
+                                    <div class="form-group">
+		                        <label class="control-label col-sm-2" for="username">Login:</label>
+		                        <div class="col-sm-9">
+		                            <input class="form-control" id="login_username" placeholder="Digite o seu Login" name="login_username">
+		                        </div>
+		                    </div>
+		                    <div class="form-group">
+		                        <label class="control-label col-sm-2" for="password">Senha:</label>
+		                        <div class="col-sm-9"> 
+		                            <input type="password" class="form-control" id="login_password" placeholder="Digite a sua Senha" name="login_password">
+		                        </div>
+		                    </div>
+                                    <div class="form-group"> 
+                                        <div class="col-sm-offset-2 col-sm-2">
+                                            <button type="submit" class="btn btn-primary">Entrar</button>
+                                        </div>
+		                    </div>
+                                </form>
+                            ';
+                    }
+                    ?>
                 </div>
-                
+
                 <!-- barra da direita -->
                 <div class="col-sm-2 sidenav">
                     <div class="well">
