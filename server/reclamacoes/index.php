@@ -3,16 +3,16 @@
 ?>
 <!DOCTYPE html>
 <html lang="en">
-    <!-- página inicial -->
+    <!-- página de reclamações -->
     <head>
-        <title>Página Inicial - Ouvidoria 2.0</title>
+        <title>Reclamações - Ouvidoria 2.0</title>
 
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <link rel="stylesheet" href="css/bootstrap.min.css">
-        <script src="js/jquery.min.js"></script>
-        <script src="js/bootstrap.min.js"></script>
+        <link rel="stylesheet" href="../css/bootstrap.min.css">
+        <script src="../js/jquery.min.js"></script>
+        <script src="../js/bootstrap.min.js"></script>
 
         <!-- Esse style abaixo é para a barra de menu -->
         <style>
@@ -53,7 +53,7 @@
         <!-- logo -->
         <div class="row">
             <div class="container-fluid">
-                <img src="images/logo.png"/>
+                <img src="../images/logo.png"/>
             </div>
         </div>
         
@@ -69,10 +69,10 @@
                 </div>
                 <div class="collapse navbar-collapse" id="myNavbar">
                     <ul class="nav navbar-nav">
-                        <li class="active"><a href="#">Início</a></li>
-                        <li><a href="reclamacoes/">Reclamações</a></li>
-                        <li><a href="relatorios/">Relatórios</a></li>
-                        <li><a href="contato/">Contato</a></li>
+                        <li><a href="../">Início</a></li>
+                        <li class="active"><a href="#">Reclamações</a></li>
+                        <li><a href="../relatorios/">Relatórios</a></li>
+                        <li><a href="../contato/">Contato</a></li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
                         <li><a href="#"> 
