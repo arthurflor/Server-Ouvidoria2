@@ -1,0 +1,42 @@
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+<script src='localDb.js'></script>
+
+</head>
+
+<body>
+
+<h1>Inserir dados</h1>
+
+<div id='insert'>
+	
+	<form id="Form_0">
+		<input name="categoria" type="text" value ="0" placeholder="categoria">
+		<input name="texto" type="text" value ="mimimi" placeholder="texto">
+		<input name="latitude" type="text" value ="1.12323" placeholder="latitude">
+		<input name="longitude" type="text" value ="2.9293"placeholder="longitude">
+		
+		<input name="imagem" value="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABUAAAAVCAYAAACpF6WWAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsIAAA7CARUoSoAAAAEtSURBVDhPvZQxkoMwDEXNVpSUlHAbjkBJSckNqBiOQAklN4CbUXr5wmKFYifsTJI3I2JZ1o8wlo0NsCyLzbLMGmOChvg4ji7jjwfRO2LS4ji2wzC47IOLKASTJPEmv7K+752KEA0J1nXtVlyBiFyHihkS9QmGxCTbtl1yeH9JNE3TS/COIIMKOY+rJdFngvM8267rnHcg5/Q2gAdRDZL1vJ7T+RE9omj3D3bXje6j83/c+K18V3RdV5PnOb0aDONpmlz0BdhT/LAxvlaVB5xp2/ayBtBTnjVuN31UYPq4oedlvCxLmifRpmnOgK8aje/SKYqCOgyQKBxZre9Kg//s9mJBcG6irPa/prflFMU/VVXlTQpZ6I44RSW+jwTDh5CvGYLadE94Kx/oKGN+AYxCHRJnqqnYAAAAAElFTkSuQmCC" placeholder="imagem aqui">
+		<input name="anonimo" type="checkbox" value="true">
+		
+		<button id="sav_env_button" value="0" type="button">Enviar</button>
+		<button id="save_button" type="button">Salvar</button>
+	</form>
+
+</div>
+
+<h1>------------------------------</h1>
+
+<div id='result'></div>
+
+<script>
+//Só pra começar listando as reclamações  
+	select();
+</script>
+
+
+
+</body>
+
+</html>
