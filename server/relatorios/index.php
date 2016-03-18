@@ -13,6 +13,7 @@
         <link rel="stylesheet" href="../css/bootstrap.min.css">
         <!-- Esse style abaixo é para mudar a cor de alguns componentes, vem por padrão -->
         <link rel="stylesheet" href="../css/newStyle.css">
+        <link rel="stylesheet" href="../css/linkStyle.css">
         
         <script src="../js/jquery.min.js"></script>
         <script src="../js/bootstrap.min.js"></script>
@@ -82,7 +83,10 @@
                 
                 <!-- centro da página (horizontalmente falando) -->
                 <div class="col-sm-8 text-left"> 
-                    
+                    <h2>Escolha uma categoria:</h2>
+                    <h3><a href="direitos_humanos/" class="effect-1">Direitos Humanos</a></h3>
+                    <h3><a href="focos_de_dengue/" class="effect-1">Focos de Dengue</a></h3>
+                    <h3><a href="ouvidoria/" class="effect-1">Ouvidoria</a></h3>
                 </div>
                 
                 <!-- barra da direita -->
