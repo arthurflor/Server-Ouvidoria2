@@ -4,26 +4,25 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <!-- página de Reclamações -->
+        <!-- página de reclamações -->
         <title>Reclamações - Ouvidoria 2.0</title>
 
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <link rel="stylesheet" href="../css/bootstrap.min.css">
+        <link rel="stylesheet" href="../../css/bootstrap.min.css">
         <!-- Esse style abaixo é para mudar a cor de alguns componentes, vem por padrão -->
-        <link rel="stylesheet" href="../css/newStyle.css">
-        <link rel="stylesheet" href="../css/linkStyle.css">
+        <link rel="stylesheet" href="../../css/newStyle.css">
         
-        <script src="../js/jquery.min.js"></script>
-        <script src="../js/bootstrap.min.js"></script>
+        <script src="../../js/jquery.min.js"></script>
+        <script src="../../js/bootstrap.min.js"></script>
     </head>
     <body>
         <!-- logo -->
         <div class="row">
             <div class="container-fluid">
-                <a href="../">
-                    <img src="../images/logo.png" alt="logo"/>
+                <a href="../../">
+                    <img src="../../images/logo.png" alt="logo"/>
                 </a>
             </div>
         </div>
@@ -40,26 +39,26 @@
                 </div>
                 <div class="collapse navbar-collapse" id="myNavbar">
                     <ul class="nav navbar-nav">
-                        <li><a href="../">Início</a></li>
+                        <li><a href="../../">Início</a></li>
                         <li class="dropdown">
                             <a class="dropdown-toggle" data-toggle="dropdown" href="#">Reclamações
                             <span class="caret"></span></a>
                             <ul class="dropdown-menu">
-                              <li><a href="direitos_humanos/">Direitos Humanos</a></li>
-                              <li><a href="focos_de_dengue/">Focos de Dengue</a></li> 
-                              <li><a href="ouvidoria/">Ouvidoria</a></li> 
+                              <li><a href="../direitos_humanos/">Direitos Humanos</a></li>
+                              <li><a href="../focos_de_dengue/">Focos de Dengue</a></li> 
+                              <li><a href="../ouvidoria/">Ouvidoria</a></li> 
                             </ul>
                         </li>
                         <li class="dropdown">
                             <a class="dropdown-toggle" data-toggle="dropdown" href="#">Relatórios
                             <span class="caret"></span></a>
                             <ul class="dropdown-menu">
-                              <li><a href="../relatorios/direitos_humanos/">Direitos Humanos</a></li>
-                              <li><a href="../relatorios/focos_de_dengue">Focos de Dengue</a></li> 
-                              <li><a href="../relatorios/ouvidoria">Ouvidoria</a></li> 
+                              <li><a href="../../relatorios/direitos_humanos/">Direitos Humanos</a></li>
+                              <li><a href="../../relatorios/focos_de_dengue">Focos de Dengue</a></li> 
+                              <li><a href="../../relatorios/ouvidoria">Ouvidoria</a></li> 
                             </ul>
                         </li>
-                        <li><a href="../contato/">Contato</a></li>
+                        <li><a href="../../contato/">Contato</a></li>
                     </ul>
                     <!-- 
                     <ul class="nav navbar-nav navbar-right">
@@ -83,10 +82,7 @@
                 
                 <!-- centro da página (horizontalmente falando) -->
                 <div class="col-sm-8 text-left"> 
-                    <h2>Escolha uma categoria:</h2>
-                    <h3><a href="direitos_humanos/" class="effect-1">Direitos Humanos</a></h3>
-                    <h3><a href="focos_de_dengue/" class="effect-1">Focos de Dengue</a></h3>
-                    <h3><a href="ouvidoria/" class="effect-1">Ouvidoria</a></h3>
+                    
                 </div>
                 
                 <!-- barra da direita -->

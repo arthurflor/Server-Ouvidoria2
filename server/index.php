@@ -40,20 +40,36 @@ session_start(); //inicia sessão, para verificação de login
                 </div>
                 <div class="collapse navbar-collapse" id="myNavbar">
                     <ul class="nav navbar-nav">
-                        <li class="active"><a href="#">Início</a></li>
-                        <li><a href="reclamacoes/">Reclamações</a></li>
-                        <li><a href="relatorios/">Relatórios</a></li>
+                        <li><a href="#">Início</a></li>
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">Reclamações
+                            <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                              <li><a href="reclamacoes/direitos_humanos/">Direitos Humanos</a></li>
+                              <li><a href="reclamacoes/focos_de_dengue/">Focos de Dengue</a></li> 
+                              <li><a href="reclamacoes/ouvidoria/">Ouvidoria</a></li> 
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">Relatórios
+                            <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                              <li><a href="relatorios/direitos_humanos/">Direitos Humanos</a></li>
+                              <li><a href="relatorios/focos_de_dengue">Focos de Dengue</a></li> 
+                              <li><a href="relatorios/ouvidoria">Ouvidoria</a></li> 
+                            </ul>
+                        </li>
                         <li><a href="contato/">Contato</a></li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
                         <li>
-                            <?php
-                            if (!isset($_SESSION['CODSIST_usuario'])) {
-                                echo '<a href="login/">Login</a>';
-                            } else {
-                                echo '<a href="logout.php?CODSIST_sair=true">Logout</a>';
-                            }
-                            ?>
+                            
+                    <!-- 
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                        </li>
+                    </ul>
+                    -->
                         </li>
                     </ul>
                 </div>

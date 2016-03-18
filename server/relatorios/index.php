@@ -40,21 +40,32 @@
                 <div class="collapse navbar-collapse" id="myNavbar">
                     <ul class="nav navbar-nav">
                         <li><a href="../">Início</a></li>
-                        <li><a href="../reclamacoes/">Reclamações</a></li>
-                        <li class="active"><a href="#">Relatórios</a></li>
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">Reclamações
+                            <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                              <li><a href="../reclamacoes/direitos_humanos/">Direitos Humanos</a></li>
+                              <li><a href="../reclamacoes/focos_de_dengue/">Focos de Dengue</a></li> 
+                              <li><a href="../reclamacoes/ouvidoria/">Ouvidoria</a></li> 
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">Relatórios
+                            <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                              <li><a href="direitos_humanos/">Direitos Humanos</a></li>
+                              <li><a href="focos_de_dengue">Focos de Dengue</a></li> 
+                              <li><a href="ouvidoria">Ouvidoria</a></li> 
+                            </ul>
+                        </li>
                         <li><a href="../contato/">Contato</a></li>
                     </ul>
+                    <!-- 
                     <ul class="nav navbar-nav navbar-right">
                         <li>
-                            <?php
-                            if (!isset($_SESSION['CODSIST_usuario'])) {
-                                echo '<a href="../login">Login</a>';
-                            } else {
-                                echo '<a href="../logout.php?CODSIST_sair=true">Logout</a>';
-                            }
-                            ?>
                         </li>
                     </ul>
+                    -->
                 </div>
             </div>
         </nav>
@@ -71,17 +82,7 @@
                 
                 <!-- centro da página (horizontalmente falando) -->
                 <div class="col-sm-8 text-left"> 
-                    <?php
-                    if (!isset($_SESSION['CODSIST_usuario'])) {
-                        echo 
-                            '<script language="javascript" type="text/javascript"> 
-                                alert("Para gerar relatórios é necessário fazer o login!");
-				window.location.href="../login";
-                            </script>';
-                    } else {
-                        //mostra relatórios
-                    }
-                    ?>
+                    
                 </div>
                 
                 <!-- barra da direita -->
@@ -101,6 +102,7 @@
                 </div>
             </div>
         </div>
+        
         
         <!-- Esse script manda o conteúdo de uma div para impressão-->
         <script>
