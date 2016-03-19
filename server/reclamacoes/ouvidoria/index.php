@@ -23,13 +23,13 @@
                 ?>
                 
                 <!-- Centro da página (horizontalmente falando) ira listar as reclamaçoes -->
-                <div class="col-sm-10 text-left">
+                <div class="col-sm-10 text-left" id="conteudo_principal">
                     <p class="newFont" align="justify">
                         <hr>
                         <h2>Ouvidoria</h2>
                         <hr>
                         <h4>Escolha os Parametros de Pesquisa:</h4>
-                        <form class="form-horizontal" role="form" method="GET" action="../ouvidoria/">
+                        <form class="form-horizontal" role="form" method="POST" action="../ouvidoria/">
                             <div class="row">
                                 <div class="col-sm-1"></div>
                                 <div class="col-sm-2">
@@ -96,15 +96,16 @@
                         <hr>
                         <h4>Resultados:</h4> 
                             <?php
-                                include '../regras_de_negocio/negocio.php'; //regra de negocio
-                                $negocioDH = new NegocioDH();
-                                $negocioDH->receberDados(); 
-                                $negocioDH->mostrarTodasReclamacoes();
+                                include '../regras_de_negocio/regras_lista.php'; //regra de negocio
+                                $negocioOuvidoria = new RegrasNegocioLista();
+                                $negocioOuvidoria->receberDados(); 
+                                $negocioOuvidoria->mostrarTodasReclamacoes();
+                                $negocioOuvidoria->criarMapaReclamacoes()
                                 //$negocioDH->criarJSONMapa();
                             ?>
                         <hr>
                         <h4>Mapa de Reclamacoes:</h4>
-                        <div id="mapa" ></div>
+                        <div id="map" style="width:500px;height:380px;"></div>
                     </p>
                 </div>
                 

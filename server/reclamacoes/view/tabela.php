@@ -24,7 +24,7 @@
 			        <td>'. $dados['user_email'] .'</td>
 			        <td>'. $dados['data'] .'</td>
 			        <td>'. '' .'</td>
-			        <td><a href="#" class="btn btn-primary">Visualizar</a></td>
+			        <td><a class="btn btn-primary" href="visualizar.php?id='.$dados['id'].'&autor='.$dados['user_nome'].'&email='.$dados['user_email'].'&data='.$dados['data'].'&lat='.$dados['latitude'].'&long='.$dados['longitude'].'">Visualizar</a></td>
 			      </tr>';			
 		}
 

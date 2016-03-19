@@ -28,7 +28,7 @@
                         <hr>
                         <h2>Reclamacoes de Focos de Dengue</h2>
                         <hr>
-                        <form class="form-horizontal" role="form" method="GET" action="../focos_de_dengue/">
+                        <form class="form-horizontal" role="form" method="POST" action="../focos_de_dengue/">
                             <div class="row">
                                 <div class="col-sm-1"></div>
                                 <div class="col-sm-2">
@@ -79,10 +79,10 @@
                         <hr>
                         <h4>Resultados:</h4> 
                             <?php
-                                include '../regras_de_negocio/negocio.php'; //regra de negocio
-                                $negocioDH = new NegocioDH();
-                                $negocioDH->receberDados(); 
-                                $negocioDH->mostrarTodasReclamacoes();
+                                include '../regras_de_negocio/regras_lista.php'; //regra de negocio
+                                $negocioDengue = new RegrasNegocioLista();
+                                $negocioDengue->receberDados(); 
+                                $negocioDengue->mostrarTodasReclamacoes();
                                 //$negocioDH->criarJSONMapa();
                             ?>
                         <hr>

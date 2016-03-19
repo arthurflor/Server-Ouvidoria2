@@ -28,7 +28,7 @@
                         <hr>
                         <h2>Reclamacoes de Direitos Humanos</h2>
                         <hr>
-                        <form class="form-horizontal" role="form" method="GET" action="../direitos_humanos/">
+                        <form class="form-horizontal" role="form" method="POST" action="../direitos_humanos/">
                             <div class="row">
                                 <div class="col-sm-1"></div>
                                 <div class="col-sm-2">
@@ -82,8 +82,8 @@
                         <hr>
                         <h4>Resultados:</h4> 
                             <?php
-                                include '../regras_de_negocio/negocio.php'; //regra de negocio
-                                $negocioDH = new NegocioDH();
+                                include '../regras_de_negocio/regras_lista.php'; //regra de negocio
+                                $negocioDH = new RegrasNegocioLista();
                                 $negocioDH->receberDados(); 
                                 $negocioDH->mostrarTodasReclamacoes();
                                 //$negocioDH->criarJSONMapa();

@@ -1,13 +1,13 @@
 <?php
 
 
-class NegocioDH {
+class RegrasNegocioLista {
 
 	private $idade; 
 	private $genero; 
 	private $email; 
 	private $categoria; 
-		//private $bairro = "bairro"; 
+	private $bairro; 
 	private $data;
 
 		//private $resultado_consulta;
@@ -17,46 +17,46 @@ class NegocioDH {
 	private $longitudes;
 
 
-	public function receberDados(){
-		if(!isset($_GET['idade'])){
-			$this->idade = false;
-		} else {
-			$this->idade = $_GET['idade'];
-		}
-		if(!isset($_GET['genero'])){
-			$this->genero = false;
-		} else {
-			$this->genero = $_GET['genero'];
-		}
-		if(!isset($_GET['email'])){
-			$this->email = false;
-		} else {
-			$this->email = $_GET['email'];
-		}
-		if(!isset($_GET['categoria'])){
-			$this->categoria = false;
-		} else {
-			$this->categoria = $_GET['categoria'];
-		}
-		if(!isset($_GET['bairro'])){
-			$this->bairro = false;
-		} else {
-			$this->bairro = $_GET['bairro'];
-		}
-		if(!isset($_GET['data'])){
-			$this->data = false;
-		} else {
-			$this->data = $_GET['data'];
-		}
+		public function receberDados(){
+			if(!isset($_POST['idade'])){
+				$this->idade = false;
+			} else {
+				$this->idade = $_POST['idade'];
+			}
+			if(!isset($_POST['genero'])){
+				$this->genero = false;
+			} else {
+				$this->genero = $_POST['genero'];
+			}
+			if(!isset($_POST['email'])){
+				$this->email = false;
+			} else {
+				$this->email = $_POST['email'];
+			}
+			if(!isset($_POST['categoria'])){
+				$this->categoria = false;
+			} else {
+				$this->categoria = $_POST['categoria'];
+			}
+			if(!isset($_POST['bairro'])){
+				$this->bairro = false;
+			} else {
+				$this->bairro = $_POST['bairro'];
+			}
+			if(!isset($_POST['data'])){
+				$this->data = false;
+			} else {
+				$this->data = $_POST['data'];
+			}
 
-		include '../../bd/bd.php';
-		$this->bd = new bancoDeDados();
-		$this->bd->estabelecerConexao(); //abre conexao com o BD
-	}
+			include '../../bd/bd.php';
+			$this->bd = new bancoDeDados();
+			$this->bd->estabelecerConexao(); //abre conexao com o BD
+		}
 
 
 		private function pegarStringSQL(){
-			$consulta_sql = "SELECT user_nome, user_email, data, latitude, longitude FROM reclamacoes WHERE ";
+			$consulta_sql = "SELECT id, user_nome, user_email, data, latitude, longitude FROM reclamacoes WHERE ";
 			
 			if($this->email == false){
 				$consulta_sql = $consulta_sql . "user_idade = user_idade ";
@@ -136,29 +136,12 @@ class NegocioDH {
 		}
 
 
-		public function criarJSONMapa(){
+		public function criarMapaReclamacoes(){
 			$this->pegarDadosMapa();
 
-			$escrita = '[
-			';
-			for ($i=0; $i < count($this->latitudes) ; $i++) { 
-				if($i<count($this->latitudes)-1){
-					$escrita .= '{
-						"Latitude": ' . $this->latitudes[$i] . ',
-						"Longitude": ' . $this->longitudes[$i] . '
-					},';
-				} else {
-					$escrita .= '{
-						"Latitude": ' . $this->latitudes[$i] . ',
-						"Longitude": ' . $this->longitudes[$i] . '
-					}
-					]';
-				}
-			}
-
-			$fp = fopen("pontos.json", "w");
-			$escreve = fwrite($fp, $escrita);
-			fclose($fp);
+			include '../view/mapa_lista_reclamacoes.php';
+			$mapa = new MapaListaReclamacoes();
+			$mapa->gerarMapa($this->latitudes, $this->longitudes);
 		}
 	}
 	?>
