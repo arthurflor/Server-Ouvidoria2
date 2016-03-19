@@ -1,5 +1,8 @@
 <?php
     session_start(); //inicia sessão, para verificação de login
+    ini_set('display_errors',1);
+    ini_set('display_startup_erros',1);
+    error_reporting(E_ALL);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -14,7 +17,7 @@
         <!-- Esse style abaixo é para mudar a cor de alguns componentes, vem por padrão -->
         <link rel="stylesheet" href="../../css/newStyle.css">
         
-        <script src="../../js/jquery.min.js"></script>
+       <script src="../../js/jquery.min.js"></script>
         <script src="../../js/bootstrap.min.js"></script>
     </head>
     <body>
@@ -70,35 +73,151 @@
             </div>
         </nav>
 
-        <div class="container-fluid text-center" id="id_da_div">    
+        <div class="container-fluid text-center">    
             <div class="row content">
                 
                 <!-- barra da esquerda -->
-                <div class="col-sm-2 sidenav">
+                <div class="col-sm-1 sidenav">
+                    <!--
                     <p><a href="#">Link</a></p>
                     <p><a href="#">Link</a></p>
                     <p><a href="#">Link</a></p>
+                    -->
                 </div>
                 
-                <!-- centro da página (horizontalmente falando) -->
-                <div class="col-sm-8 text-left"> 
-                    
+                <!-- Centro da página (horizontalmente falando) ira listar as reclamaçoes -->
+                <div class="col-sm-10 text-left">
+                    <p class="newFont" align="justify">
+                    <hr>
+                    <h2>Ouvidoria</h2>
+                    <hr>
+                    <h4>Escolha os Parametros de Pesquisa:</h4>
+                    <form class="form-horizontal" role="form" method="GET" action="../ouvidoria/">
+                        <div class="row">
+                            <div class="col-sm-1"></div>
+                            <div class="col-sm-2">
+                                <div class="form-group">
+                                    <label for="sel1">Subcategoria</label>
+                                    <select class="form-control" name="categoria" required>
+                                        <option value="1">Administracao</option>
+                                        <option value="2">Assistencia Social</option>
+                                        <option value="3">CEACA</option>
+                                        <option value="4">Controladoria</option>
+                                        <option value="5">Cultura e Turismo</option>
+                                        <option value="6">Desenvolvimento Rural</option>
+                                        <option value="7">Educacao</option>
+                                        <option value="8">Infraestrutura</option>
+                                        <option value="9">Meio Ambiente</option>
+                                        <option value="10">Participacao Social</option>
+                                        <option value="11">Previdencia Social</option>
+                                        <option value="12">Procon</option>
+                                        <option value="13">Procuradoria</option>
+                                        <option value="14">Saude</option>
+                                        <option value="15">Transito</option>
+                                        <option value="16">Transportes</option>
+                                        <option value="17">Urbanizaçao</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-sm-1">
+                                <div class="form-group">
+                                    <label for="usr">Idade:</label>
+                                    <input type="text" class="form-control" name="idade">
+                                </div>
+                            </div>
+                            <div class="col-sm-1">
+                                <div class="form-group ">
+                                    <label for="sel1">Genero:</label>
+                                    <select class="form-control" name="genero">
+                                        <option></option>
+                                        <option value="m">Masculino</option>
+                                        <option value="f">Feminino</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-sm-2">
+                                <div class="form-group">
+                                    <label for="usr">Email:</label>
+                                    <input type="text" class="form-control" name="email">
+                                </div>
+                            </div>
+                            <div class="col-sm-2">
+                                <div class="form-group">
+                                    <label for="usr">Data:</label>
+                                    <input type="text" class="form-control" name="data">
+                                </div>
+                            </div>
+                            <div class="col-sm-2">
+                                <div class="form-group">
+                                    <label for="usr">Bairro:</label>
+                                    <input type="text" class="form-control" name="bairro">
+                                </div>
+                            </div>
+                        </div>
+                        <button class="btn btn-primary" type="submit">Pesquisar!</button>
+                    </form>
+                    <hr>
+                    <h4>Resultados:</h4> 
+                        <?php
+                            //ok, aqui vamos chamar alguns metodos
+                            //vamos verificar via GET os parametros da pesquisa
+                                if(!isset($_GET['idade'])){
+                                    $idade = false;
+                                } else {
+                                    $idade = $_GET['idade'];
+                                }
+                                if(!isset($_GET['genero'])){
+                                    $genero = false;
+                                } else {
+                                    $genero = $_GET['genero'];
+                                }
+                                if(!isset($_GET['email'])){
+                                    $email = false;
+                                } else {
+                                    $email = $_GET['email'];
+                                }
+                                if(!isset($_GET['categoria'])){
+                                    $categoria = false;
+                                } else {
+                                    $categoria = $_GET['categoria'];
+                                }
+                                if(!isset($_GET['bairro'])){
+                                    $bairro = false;
+                                } else {
+                                    $bairro = $_GET['bairro'];
+                                }
+                                if(!isset($_GET['data'])){
+                                    $data = false;
+                                } else {
+                                    $data = $_GET['data'];
+                                }
+
+                                include '../regras_de_negocio/negocio.php'; //regra de negocio
+                                $negocioDH = new NegocioDH();
+                                $negocioDH->receberDados($idade,$genero,$email,$categoria,$bairro,$data); 
+                                $negocioDH->mostrarTodasReclamacoes();
+                                $negocioDH->criarJSONMapa();
+                            
+                        ?>
+                    <hr>
+                    <h4>Mapa de Reclamacoes:</h4>
+                    <div id="mapa" ></div>
+                    </p>
                 </div>
                 
                 <!-- barra da direita -->
-                <div class="col-sm-2 sidenav">
+                <div class="col-sm-1 sidenav">
+                    
                     <div class="well">
-                        <p>ADS 1</p>
+                        <p><!--ADS 1--></p>
                     </div>
                     <div class="well">
-                        <p>ADS 2</p>
+                        <p><!--ADS 1--></p>
                     </div>
                     <div class="well">
-                        <p>ADS 3</p>
+                        <p><!--ADS 1--></p>
                     </div>
-                    <div class="well">
-                        <p>ADS 4</p>
-                    </div>
+                    
                 </div>
             </div>
         </div>

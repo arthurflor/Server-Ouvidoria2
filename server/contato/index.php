@@ -39,7 +39,6 @@
                 </div>
                 <div class="collapse navbar-collapse" id="myNavbar">
                     <ul class="nav navbar-nav">
-                        <ul class="nav navbar-nav">
                         <li><a href="../">Início</a></li>
                         <li class="dropdown">
                             <a class="dropdown-toggle" data-toggle="dropdown" href="#">Reclamações
@@ -61,7 +60,6 @@
                         </li>
                         <li><a href="#">Contato</a></li>
                     </ul>
-                    </ul>
                     <ul class="nav navbar-nav navbar-right">
                         <!--<li>
                             
@@ -77,22 +75,28 @@
                 
                 <!-- barra da esquerda -->
                 <div class="col-sm-2 sidenav">
+                    <!--
                     <p><a href="#">Link</a></p>
                     <p><a href="#">Link</a></p>
                     <p><a href="#">Link</a></p>
+                    -->
                 </div>
                 
                 <!-- centro da página (horizontalmente falando) -->
                 <div class="col-sm-8 text-left"> 
-                    <h1>Welcome</h1>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
                     <hr>
-                    <h3>Test</h3>
-                    <p>Lorem ipsum...</p>
+                    <h2>Entre em contato conosco:</h2>
+                    <hr>
+                    <!-- Formulario de contato -->
+                    <form>
+
+                    </form>
+                    <hr>
                 </div>
                 
                 <!-- barra da direita -->
                 <div class="col-sm-2 sidenav">
+                    <!--
                     <div class="well">
                         <p>ADS 1</p>
                     </div>
@@ -105,6 +109,7 @@
                     <div class="well">
                         <p>ADS 4</p>
                     </div>
+                    -->
                 </div>
             </div>
         </div>

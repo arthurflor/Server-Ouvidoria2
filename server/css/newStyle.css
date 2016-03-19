@@ -10,7 +10,7 @@
             /* Barras laterais */
             .sidenav {
                 padding-top: 20px;
-                background-color: #f1f1f1;
+                background-color: #ffffff;
                 height: 100%;
             }
 
@@ -28,4 +28,10 @@
                     padding: 15px;
                 }
                 .row.content {height:auto;} 
+            }
+            
+            p.newFont{
+                font: Dialog;
+                
+                font-size: larger;
             }

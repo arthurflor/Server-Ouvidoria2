@@ -1,5 +1,8 @@
 <?php
     session_start(); //inicia sessão, para verificação de login
+    ini_set('display_errors',1);
+    ini_set('display_startup_erros',1);
+    error_reporting(E_ALL);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -70,23 +73,124 @@
             </div>
         </nav>
 
-        <div class="container-fluid text-center" id="id_da_div">    
+        <div class="container-fluid text-center">    
             <div class="row content">
                 
                 <!-- barra da esquerda -->
-                <div class="col-sm-2 sidenav">
+                <div class="col-sm-1 sidenav">
+                    <!--
                     <p><a href="#">Link</a></p>
                     <p><a href="#">Link</a></p>
                     <p><a href="#">Link</a></p>
+                    -->
                 </div>
                 
-                <!-- centro da página (horizontalmente falando) -->
-                <div class="col-sm-8 text-left"> 
-                    
+                <!-- Centro da página (horizontalmente falando) ira listar as reclamaçoes -->
+                <div class="col-sm-10 text-left">
+                    <p class="newFont" align="justify">
+                    <hr>
+                    <h2>Reclamacoes de Direitos Humanos</h2>
+                    <hr>
+                    <form class="form-horizontal" role="form" method="GET" action="../direitos_humanos/">
+                        <div class="row">
+                            <div class="col-sm-1"></div>
+                            <div class="col-sm-2">
+                                <div class="form-group">
+                                    <label for="sel1">Subcategoria</label>
+                                    <select class="form-control" name="categoria" required>
+                                        <option value="18">Mulher</option>
+                                        <option value="19">Idoso</option>
+                                        <option value="20">Infancia e Juventude</option>
+                                        <option value="21">Animais</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-sm-1">
+                                <div class="form-group">
+                                    <label for="usr">Idade:</label>
+                                    <input type="text" class="form-control" name="idade">
+                                </div>
+                            </div>
+                            <div class="col-sm-1">
+                                <div class="form-group ">
+                                    <label for="sel1">Genero:</label>
+                                    <select class="form-control" name="genero">
+                                        <option></option>
+                                        <option value="m">Masculino</option>
+                                        <option value="f">Feminino</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-sm-2">
+                                <div class="form-group">
+                                    <label for="usr">Email:</label>
+                                    <input type="text" class="form-control" name="email">
+                                </div>
+                            </div>
+                            <div class="col-sm-2">
+                                <div class="form-group">
+                                    <label for="usr">Data:</label>
+                                    <input type="text" class="form-control" name="data">
+                                </div>
+                            </div>
+                            <div class="col-sm-2">
+                                <div class="form-group">
+                                    <label for="usr">Bairro:</label>
+                                    <input type="text" class="form-control" name="bairro">
+                                </div>
+                            </div>
+                        </div>
+                        <button class="btn btn-primary" type="submit">Pesquisar!</button>
+                    </form>
+                    <hr>
+                    <h4>Resultados:</h4> 
+                        <?php
+                            //ok, aqui vamos chamar alguns metodos
+                            //vamos verificar via GET os parametros da pesquisa
+                                if(!isset($_GET['idade'])){
+                                    $idade = false;
+                                } else {
+                                    $idade = $_GET['idade'];
+                                }
+                                if(!isset($_GET['genero'])){
+                                    $genero = false;
+                                } else {
+                                    $genero = $_GET['genero'];
+                                }
+                                if(!isset($_GET['email'])){
+                                    $email = false;
+                                } else {
+                                    $email = $_GET['email'];
+                                }
+                                if(!isset($_GET['categoria'])){
+                                    $categoria = false;
+                                } else {
+                                    $categoria = $_GET['categoria'];
+                                }
+                                if(!isset($_GET['bairro'])){
+                                    $bairro = false;
+                                } else {
+                                    $bairro = $_GET['bairro'];
+                                }
+                                if(!isset($_GET['data'])){
+                                    $data = false;
+                                } else {
+                                    $data = $_GET['data'];
+                                }
+
+                                include '../regras_de_negocio/negocio.php'; //regra de negocio
+                                $negocioDH = new NegocioDH();
+                                $negocioDH->receberDados($idade,$genero,$email,$categoria,$bairro,$data); 
+                                $negocioDH->mostrarTodasReclamacoes();
+                            
+                        ?>
+                    <hr>
+                    </p>
                 </div>
                 
                 <!-- barra da direita -->
-                <div class="col-sm-2 sidenav">
+                <div class="col-sm-1 sidenav">
+                    <!--
                     <div class="well">
                         <p>ADS 1</p>
                     </div>
@@ -99,6 +203,7 @@
                     <div class="well">
                         <p>ADS 4</p>
                     </div>
+                    -->
                 </div>
             </div>
         </div>

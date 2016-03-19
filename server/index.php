@@ -17,6 +17,8 @@ session_start(); //inicia sessão, para verificação de login
         
         <script src="js/jquery.min.js"></script>
         <script src="js/bootstrap.min.js"></script> 
+
+        <link rel="shortcut icon" href="/images/logo.ico">
     </head>
     <body>
         <!-- logo -->
@@ -81,22 +83,25 @@ session_start(); //inicia sessão, para verificação de login
 
                 <!-- barra da esquerda -->
                 <div class="col-sm-2 sidenav">
+                    <!--
                     <p><a href="#">Link</a></p>
                     <p><a href="#">Link</a></p>
                     <p><a href="#">Link</a></p>
+                    -->
                 </div>
 
                 <!-- centro da página (horizontalmente falando) -->
-                <div class="col-sm-8 text-left"> 
-                    <h1>Welcome</h1>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                <div class="col-sm-8 text-left">
+                    <hr> 
+                    <h2>Bem vindo ao Sistema Servidor do App Gabinete Digital 2.0 da prefeitura de Caruaru.</h2>
                     <hr>
-                    <h3>Test</h3>
-                    <p>Lorem ipsum...</p>
+                    <h3>Escolha uma das opçoes do menu acima.</h3>
+                    <hr>
                 </div>
 
                 <!-- barra da direita -->
                 <div class="col-sm-2 sidenav">
+                    <!--
                     <div class="well">
                         <p>ADS 1</p>
                     </div>
@@ -109,6 +114,7 @@ session_start(); //inicia sessão, para verificação de login
                     <div class="well">
                         <p>ADS 4</p>
                     </div>
+                    -->
                 </div>
             </div>
         </div>

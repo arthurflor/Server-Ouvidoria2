@@ -1,0 +1,26 @@
+ID - RECLAMAÇAO
+
+_FocosDeDengue
+0 - Focos de Dengue
+
+_Ouvidoria
+1 - Administraçao
+2 - Assitencia Social
+3 - CEACA
+4 - Controladoria
+5 - Cultura e Turismo
+6 - Desenvolvimento Rural
+7 - Educaçao
+8 - Infraestrutura
+9 - Meio Ambiente
+10 - Participaçao Social
+11 - Previdencia Social
+12 - Procon
+13 - Procuradoria
+14 - Saude
+15 - Transito
+16 - Transportes
+17 - Urbanizaçao
+
+_DireitosHumanos (a definir)
+18 - 
