@@ -1,40 +1,64 @@
 <?php
 
-	
-	class NegocioDH {
 
-		private $idade; 
-		private $genero; 
-		private $email; 
-		private $categoria; 
+class NegocioDH {
+
+	private $idade; 
+	private $genero; 
+	private $email; 
+	private $categoria; 
 		//private $bairro = "bairro"; 
-		private $data;
-		
+	private $data;
+
 		//private $resultado_consulta;
-		private $bd;
+	private $bd;
 
-		private $latitudes;
-		private $longitudes;
+	private $latitudes;
+	private $longitudes;
 
 
-		public function receberDados($idadeC, $generoC, $emailC, $categoriaC, $bairroC, $dataC){
-			$this->idade = $idadeC;
-			$this->genero = $generoC;
-			$this->email = $emailC;
-			$this->categoria = $categoriaC;
-			$this->bairro = $bairroC;
-			$this->data = $dataC;
-
-			include '../../bd/bd.php';
-			$this->bd = new bancoDeDados();
-			$this->bd->estabelecerConexao(); //abre conexao com o BD
+	public function receberDados(){
+		if(!isset($_GET['idade'])){
+			$this->idade = false;
+		} else {
+			$this->idade = $_GET['idade'];
 		}
+		if(!isset($_GET['genero'])){
+			$this->genero = false;
+		} else {
+			$this->genero = $_GET['genero'];
+		}
+		if(!isset($_GET['email'])){
+			$this->email = false;
+		} else {
+			$this->email = $_GET['email'];
+		}
+		if(!isset($_GET['categoria'])){
+			$this->categoria = false;
+		} else {
+			$this->categoria = $_GET['categoria'];
+		}
+		if(!isset($_GET['bairro'])){
+			$this->bairro = false;
+		} else {
+			$this->bairro = $_GET['bairro'];
+		}
+		if(!isset($_GET['data'])){
+			$this->data = false;
+		} else {
+			$this->data = $_GET['data'];
+		}
+
+		include '../../bd/bd.php';
+		$this->bd = new bancoDeDados();
+		$this->bd->estabelecerConexao(); //abre conexao com o BD
+	}
 
 
 		private function pegarStringSQL(){
 			$consulta_sql = "SELECT user_nome, user_email, data, latitude, longitude FROM reclamacoes WHERE ";
 			
-			if($this->idade == false){
+			if($this->email == false){
 				$consulta_sql = $consulta_sql . "user_idade = user_idade ";
 			} else {
 				$consulta_sql = $consulta_sql . "user_idade = '$this->idade' ";
@@ -133,8 +157,8 @@
 			}
 
 			$fp = fopen("pontos.json", "w");
- 			$escreve = fwrite($fp, $escrita);
+			$escreve = fwrite($fp, $escrita);
 			fclose($fp);
 		}
 	}
-?>
+	?>
