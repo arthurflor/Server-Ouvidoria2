@@ -85,7 +85,7 @@ function select(){
 		var db = openDatabase('mydb', '1.0', 'Test DB', 2 * 1024 * 1024);
 		var html = [];
 		
-		document.getElementById("result").innerHTML = "<img src='progressbar.gif' height='30' width='30'>Carregando lista...";
+		document.getElementById("result").innerHTML = "<img src='images/progressbar.gif' height='30' width='30'>Carregando lista...";
 		
 		db.transaction(function (tx) {
 			
@@ -96,18 +96,30 @@ function select(){
 				var len = results.rows.length, i;
 				for (i = 0; i < len; i++) {
 
-				html += "<form id='form_"+results.rows.item(i).id+"'>"
-				+ "<input name='id' type='text' value='"+ results.rows.item(i).id +"'><br>"
-				+ "<input name='categoria' type='text' value='"+ results.rows.item(i).categoria +"'>"
-				+ "<input name='texto' type='text' value='"+ results.rows.item(i).texto +"'>"
-				+ "<input name='latitude' type='text' value='"+ results.rows.item(i).latitude + "'>"
-				+ "<input name='longitude' type='text' value='" + results.rows.item(i).longitude + "'>"
-				//+ "<input name='data' type='text' value='"+ results.rows.item(i).data +"'>"
-				+ "<input name='imagem' type='text' value='"+ results.rows.item(i).imagem +"'>"
-				+ "<input name='anonimo' type='text' value='"+ results.rows.item(i).anonimo +"'>"
-				+ "<img src='"+results.rows.item(i).imagem+"' height='50' width='50' >"
-				+ "<button name='del_button' value='"+ results.rows.item(i).id +"' type='button' class='teste' >Deletar</button>"
-				+ "<button name='env_button' value='"+ results.rows.item(i).id +"' type='button'>Enviar</button>"
+				html += "<form id='form_"+results.rows.item(i).id+"' class='pendente'>"
+				+ "<input class='hidden' name='id' type='text' value='"+ results.rows.item(i).id +"'><br>"
+				+ "<input class='hidden' name='categoria' type='text' value='"+ results.rows.item(i).categoria +"'>"
+				+ "<input class='hidden' name='texto' type='text' value='"+ results.rows.item(i).texto +"'>"
+				+ "<input class='hidden' name='latitude' type='text' value='"+ results.rows.item(i).latitude + "'>"
+				+ "<input class='hidden' name='longitude' type='text' value='" + results.rows.item(i).longitude + "'>"
+				//+ "<input name='data' type='text' value='"+ results.rows.item(i).data +"'>" // agora o sistema pega a data na hora de enviar a mensagem
+
+
+				+ "<ul class='reclamacao'>"
+				
+				+ "<li class='recCategoria'><p>" + pegarCategoriaPorId(results.rows.item(i).categoria) + "</p></li>"
+				+ "<li> <p>" + results.rows.item(i).texto.substring(0,20)+ "...</li>"
+				
+				+ "<li><button name='env_button' value='"+ results.rows.item(i).id +"' type='button' class='botao1'>Enviar</button>"
+				+ "<button name='del_button' value='"+ results.rows.item(i).id +"' type='button' class='botao2' >Deletar</button></p></li>"
+				
+				+ "</ul>"
+								
+
+				+ "<input hidden name='imagem' type='text' value='"+ results.rows.item(i).imagem +"'>"
+				+ "<input hidden name='anonimo' type='text' value='"+ results.rows.item(i).anonimo +"'>"
+				+ "<img hidden src='"+results.rows.item(i).imagem+"' height='50' width='50' >"
+				
 				+ "</form>";
 
 
@@ -115,6 +127,7 @@ function select(){
 			}
 			
 			document.getElementById("result").innerHTML = html;
+			$(".hidden").hide();
 			
 			$("button").click(function(event){
 		
@@ -169,11 +182,10 @@ function postRequest(id, sendData){
 			sendData+= userData;
 			
 		}
-		//var webService = "http://renanfelixrodrigues.com.br/ouvidoria/server.php"; // Teste remoto
-		var webService = "../web_service/handler.php"; // Teste local
-		
+		var webService = "http://renanfelixrodrigues.com.br/ouvidoria/server.php";
+
 		//alert("Post data: " + sendData);
-		document.getElementById("result").innerHTML = "<img src='progressbar.gif' height='30' width='30'>Enviando dados...";
+		document.getElementById("result").innerHTML = "<img src='images/progressbar.gif' height='30' width='30'>Enviando dados...";
 		
 		//
 		//Checa se é anonimo ou não
@@ -218,7 +230,11 @@ function postRequest(id, sendData){
 	
 }
 
-
+function pegarCategoriaPorId(id){
+	
+	if(id == 0){ return "Foco de mosquito";}else{ return "Categoria não encontrada";}
+	
+}
 	
 //----------------------------------------------------------------------------------------
 //
