@@ -103,22 +103,22 @@ function select(){
 				+ "<input class='hidden' name='latitude' type='text' value='"+ results.rows.item(i).latitude + "'>"
 				+ "<input class='hidden' name='longitude' type='text' value='" + results.rows.item(i).longitude + "'>"
 				//+ "<input name='data' type='text' value='"+ results.rows.item(i).data +"'>" // agora o sistema pega a data na hora de enviar a mensagem
-                + "<img hidden src='"+results.rows.item(i).imagem+"' height='50' width='50' >"
 
-				+ "<div class='card'><ul class='reclamacao'>"
+
+				+ "<ul class='reclamacao'>"
 				
-				+ " <div class='item item-divider'><p> " + pegarCategoriaPorId(results.rows.item(i).categoria) + "</p></div>"
-				+ " <div class='item item-text-wrap'><p>" + results.rows.item(i).texto.substring(0,20)+ "...</p></div>"
+				+ "<li class='recCategoria'><p>" + pegarCategoriaPorId(results.rows.item(i).categoria) + "</p></li>"
+				+ "<li> <p>" + results.rows.item(i).texto.substring(0,20)+ "...</li>"
 				
-				+ "<div><button name='env_button' value='"+ results.rows.item(i).id +"' type='button' class='button button-small button-balanced icon-right ion-checkmark-round'>Enviar  </button>"
-				+ "<button name='del_button' value='"+ results.rows.item(i).id +"' type='button' class='button button-small button-assertive icon-right ion-close-circled' >Apagar </button></div>"
+				+ "<li><button name='env_button' value='"+ results.rows.item(i).id +"' type='button' class='botao1'>Enviar</button>"
+				+ "<button name='del_button' value='"+ results.rows.item(i).id +"' type='button' class='botao2' >Deletar</button></p></li>"
 				
-				+ "</div>"
+				+ "</ul>"
 								
 
-				+ "<input class='hidden' name='imagem' type='text' value='"+ results.rows.item(i).imagem +"'>"
-				+ "<input class='hidden' name='anonimo' type='text' value='"+ results.rows.item(i).anonimo +"'>"
-				
+				+ "<input hidden name='imagem' type='text' value='"+ results.rows.item(i).imagem +"'>"
+				+ "<input hidden name='anonimo' type='text' value='"+ results.rows.item(i).anonimo +"'>"
+				+ "<img hidden src='"+results.rows.item(i).imagem+"' height='50' width='50' >"
 				
 				+ "</form>";
 
@@ -127,7 +127,7 @@ function select(){
 			}
 			
 			document.getElementById("result").innerHTML = html;
-			//$(".hidden").hide();
+			$(".hidden").hide();
 			
 			$("button").click(function(event){
 		
