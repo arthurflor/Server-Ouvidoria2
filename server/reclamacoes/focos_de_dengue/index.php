@@ -1,6 +1,6 @@
 <?php
-    session_start(); //inicia sessão, para verificação de login
     include '../regras_de_negocio/erros_php.php'; //mostra os erros de php da pagina
+    $categoria_desta_pagina = 0; 
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -76,15 +76,25 @@
                             </div>
                             <button class="btn btn-primary" type="submit">Pesquisar!</button>
                         </form>
-                        <hr>
-                        <h4>Resultados:</h4> 
                             <?php
                                 include '../regras_de_negocio/regras_lista.php'; //regra de negocio
                                 $negocioDengue = new RegrasNegocioLista();
-                                $negocioDengue->receberDados(); 
+                                $negocioDengue->receberDados($categoria_desta_pagina); 
                                 $negocioDengue->mostrarTodasReclamacoes();
-                                //$negocioDH->criarJSONMapa();
+                                $negocioDengue->criarMapaReclamacoes();
                             ?>
+                        <hr>
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <h4>Mapa de Reclamacoes:</h4>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-3"></div>
+                            <div class="col-sm-9">
+                                <div id="map" style="width:500px;height:380px;"></div>
+                            </div>
+                        </div>
                         <hr>
                     </p>
                 </div>
@@ -94,19 +104,6 @@
                 ?>
             </div>
         </div>
-        
-        
-        <!-- Esse script manda o conteúdo de uma div para impressão-->
-        <script>
-            document.getElementById('id_do_button').onclick = function() {
-                var conteudo = document.getElementById('id_da_div').innerHTML,
-                    tela_impressao = window.open('about:blank');
-
-                tela_impressao.document.write(conteudo);
-                tela_impressao.window.print();
-                tela_impressao.window.close();
-            };
-        </script>
         
         <?php
             include '../view/footer.html'; //rodape da pagina

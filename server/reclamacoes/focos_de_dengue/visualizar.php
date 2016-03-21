@@ -39,7 +39,7 @@
                 ?>
             </div>
         </div>
-                
+        
         <!-- Esse script manda o conteúdo de uma div para impressão-->
         <script src="../../js/opcao_imprimir.js">
         </script>

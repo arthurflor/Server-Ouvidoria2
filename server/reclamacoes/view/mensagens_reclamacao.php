@@ -14,52 +14,66 @@
 			include '../view/mapa_reclamacao_individual.php';
 			echo 
 				'
-				<div id="reclamao_div">
+				<div id="reclamacao_div">
 					<hr>
 					<h2>Dados da reclamacao:</h2>
 					<h3>
 					<hr>
 					<div class="row">
-						<div class="col-sm-3">
+						<div class="col-sm-4">
 							Autor: <strong>'.$dados['user_nome'].'</strong>
 						</div>
-						<div class="col-sm-3">
+						<div class="col-sm-4">
 							E-mail: <strong>'.$dados['user_email'].'</strong>
 						</div>
-						<div class="col-sm-3">
+						<div class="col-sm-2">
 							Idade: <strong>'.$dados['user_idade'].'</strong>
 						</div>
-						<div class="col-sm-3">
+						<div class="col-sm-2">
 							Genero: <strong>'.$dados['user_genero'].'</strong>
 						</div>
 					</div>
 					<hr>
 					<div class="row">
-						<div class="col-sm-12">
-							Texto: '.$dados['texto'].'
+						<div class="col-sm-1">
+							Texto: 
+						</div>
+						<div class="col-sm-11">
+							'.$dados['texto'].'
 						</div>
 					</div>
 					<hr>
 					<div class="row">
-						<div class="col-sm-12">
-							Imagem:<br> <img src="../../'.$dados['imagem'].'" width="600" height="400" alt="img_reclamacao"/>
+						<div class="col-sm-2">
+							Imagem:
+						</div>
+						<div class="col-sm-10">
+							<img src="../../'.$dados['imagem'].'" width="600" height="400" alt="img_reclamacao"/>
 						</div>
 					</div>
 					<hr>
 					<div class="row">
-						<div class="col-sm-12">
-							Mapa:<br>
+						<div class="col-sm-2">Mapa:</div>
+						<div class="col-sm-10">
 							<div id="googleMap" style="width:500px;height:380px;"></div>
 						</div>
 					</div>
-					</h3>
 					<hr>
 				</div>
 				';
 		}
 
 		public function botoesExportar(){
-
+			echo
+				'<div class="row">
+					<div class="col-sm-2"><h3>Exportar:</h3></div>
+					<div class="col-sm-10">
+						<button class="btn btn-primary" id="botao_imprimir">Imprimir</button>
+						<button class="btn btn-primary" id="botao_PDF">PDF</button>
+					</div>
+				</div>
+				<hr>
+					';
 		}
 
 	}

@@ -68,6 +68,7 @@
 					while ($dados = $resultado_consulta->fetch_array()) {
 						$mensagens->reclamacao($dados);
 					}
+					$mensagens->botoesExportar();
 				} else { //nao correspondem
 					$mensagens->reclamacaoInvalida();
 				}

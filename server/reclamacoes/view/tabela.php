@@ -1,7 +1,12 @@
 <?php
 
 	class Tabela{
-	
+		
+		public function imprimirTitulo(){
+			echo '<hr>
+                        <h4>Resultados:</h4> ';
+		}
+
 		public function imprimirCabecalho(){
 			
 			echo '<table class="table table-hover">

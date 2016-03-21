@@ -1,6 +1,6 @@
 <?php
-    session_start(); //inicia sessão, para verificação de login
     include '../regras_de_negocio/erros_php.php'; //mostra os erros de php da pagina
+    $categoria_desta_pagina = 1; 
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -36,6 +36,7 @@
                                     <div class="form-group">
                                         <label for="sel1">Subcategoria</label>
                                         <select class="form-control" name="categoria" required>
+                                            <option value="30">Todas</option>
                                             <option value="1">Administracao</option>
                                             <option value="2">Assistencia Social</option>
                                             <option value="3">CEACA</option>
@@ -93,19 +94,27 @@
                             </div>
                             <button class="btn btn-primary" type="submit">Pesquisar!</button>
                         </form>
-                        <hr>
-                        <h4>Resultados:</h4> 
                             <?php
                                 include '../regras_de_negocio/regras_lista.php'; //regra de negocio
                                 $negocioOuvidoria = new RegrasNegocioLista();
-                                $negocioOuvidoria->receberDados(); 
+                                $negocioOuvidoria->receberDados($categoria_desta_pagina); 
                                 $negocioOuvidoria->mostrarTodasReclamacoes();
-                                $negocioOuvidoria->criarMapaReclamacoes()
-                                //$negocioDH->criarJSONMapa();
+                                $negocioOuvidoria->criarMapaReclamacoes();
                             ?>
                         <hr>
-                        <h4>Mapa de Reclamacoes:</h4>
-                        <div id="map" style="width:500px;height:380px;"></div>
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <h4>Mapa de Reclamacoes:</h4>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-3"></div>
+                            <div class="col-sm-9">
+                                <div id="map" style="width:500px;height:380px;"></div>
+                            </div>
+                        </div>
+                        <hr>
+                        
                     </p>
                 </div>
                 
@@ -115,20 +124,7 @@
 
             </div>
         </div>
-        
-        
-        <!-- Esse script manda o conteúdo de uma div para impressão-->
-        <script>
-            document.getElementById('id_do_button').onclick = function() {
-                var conteudo = document.getElementById('id_da_div').innerHTML,
-                    tela_impressao = window.open('about:blank');
-
-                tela_impressao.document.write(conteudo);
-                tela_impressao.window.print();
-                tela_impressao.window.close();
-            };
-        </script>
-        
+                
         <?php
             include '../view/footer.html'; //rodape da pagina
         ?>

@@ -46,11 +46,11 @@ CREATE TABLE IF NOT EXISTS `reclamacoes` (
 --
 
 INSERT INTO `reclamacoes` (`id`, `user_nome`, `user_email`, `user_idade`, `user_genero`, `texto`, `data`, `imagem`, `categoria`, `latitude`, `longitude`) VALUES
-(1, 'Leylane', 'xlehx@gmail.com', 20, 'f', 'oi isso é um absurdo', '2016-03-01', 'images/upload/Centro.jpg', 1, -8.285913, -35.972218),
-(2, 'renan', 'renan@bomito.com', 23, 'm', 'que coisa horrivel', '2016-03-10', 'images/upload/EncantoDaSerra.JPG', 2, -8.308123, -35.975121),
-(3, 'iago', 'iago@gmail.com', 19, 'm', 'blitz ae kkkkk', '2016-03-01', 'images/upload/MariaAuxiliadora.jpg', 3, -8.277621, -36.002090),
-(4, 'arthur', 'flor@com.ce', 23, 'm', 'falta as obras aeeee', '2016-03-10', 'images/upload/LuizGonzaga.jpg', 4, -8.255622, -35.971748),
-(5, 'Gustavo leonardo', 'guto@leoni.com', 20, 'm', 'eu moro perto dae', '2016-03-01', 'images/upload/Rendeiras.jpg', 5, -8.282965, -35.938576);
+(20, 'Leylane', 'xlehx@gmail.com', 20, 'f', 'oi isso é um absurdo', '2016-03-01', 'images/upload/Centro.jpg', 18, -8.285913, -35.972218),
+(21, 'renan', 'renan@bomito.com', 23, 'm', 'que coisa horrivel', '2016-03-10', 'images/upload/EncantoDaSerra.JPG', 18, -8.308123, -35.975121),
+(22, 'iago', 'iago@gmail.com', 19, 'm', 'blitz ae kkkkk', '2016-03-01', 'images/upload/MariaAuxiliadora.jpg', 18, -8.277621, -36.002090),
+(23, 'arthur', 'flor@com.ce', 23, 'm', 'falta as obras aeeee', '2016-03-10', 'images/upload/LuizGonzaga.jpg', 18, -8.255622, -35.971748),
+(24, 'Gustavo leonardo', 'guto@leoni.com', 20, 'm', 'eu moro perto dae', '2016-03-01', 'images/upload/Rendeiras.jpg', 18, -8.282965, -35.938576);
 
 -- --------------------------------------------------------
 
