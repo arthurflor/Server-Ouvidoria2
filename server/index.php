@@ -25,7 +25,7 @@ session_start(); //inicia sessão, para verificação de login
         <div class="row">
             <div class="container-fluid">
                 <a href="#">
-                    <img src="images/logo.png" alt="logo"/>
+                    <img src="imagens/logo.png" alt="logo"/>
                 </a>
             </div>
         </div>

@@ -31,3 +31,4 @@ a:before, a:after, a > span:before, a > span:after {
 .effect-1:hover:before {
   transform: scaleX(1);
 }
+

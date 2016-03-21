@@ -1,4 +1,5 @@
 <?php
+    session_start();
     include '../regras_de_negocio/erros_php.php'; //mostra os erros de php da pagina
     $categoria_desta_pagina = 1; 
 ?>
@@ -29,7 +30,7 @@
                         <h2>Ouvidoria</h2>
                         <hr>
                         <h4>Escolha os Parametros de Pesquisa:</h4>
-                        <form class="form-horizontal" role="form" method="POST" action="../ouvidoria/">
+                        <form class="form-horizontal" role="form" method="GET" action="../ouvidoria/">
                             <div class="row">
                                 <div class="col-sm-1"></div>
                                 <div class="col-sm-2">

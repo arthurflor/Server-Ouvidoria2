@@ -48,7 +48,7 @@
 							Imagem:
 						</div>
 						<div class="col-sm-10">
-							<img src="../../'.$dados['imagem'].'" width="600" height="400" alt="img_reclamacao"/>
+							<img src="../../imagens/upload/'.$dados['imagem'].'" width="600" height="400" alt="img_reclamacao"/>
 						</div>
 					</div>
 					<hr>
