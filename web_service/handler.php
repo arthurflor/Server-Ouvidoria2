@@ -1,15 +1,37 @@
 <?php
+
+//--------------------------
+// Informações do banco
+//--------------------------
 $servername = "localhost";
 $username = "root";
 $password = "";
 $dbname = "ouvidoriabd";
+//--------------------------
+// Informações do banco
+//--------------------------
 
-$texto = $_POST["texto"];
-$categoria = $_POST["categoria"];
-$latitude = $_POST["latitude"];
-$longitude = $_POST["longitude"];
-$data = $_POST["data"];
+
+
+if(isset($_POST["texto"])){ $texto = $_POST["texto"]; }else{ $texto = "";}
+if(isset($_POST["categoria"])){ $categoria = $_POST["categoria"]; }else{ $categoria = -1;}
+if(isset($_POST["endereco"])){ $endereco = $_POST["endereco"]; }else{ $endereco = "";}
+if(isset($_POST["data"])){ $data = $_POST["data"]; }else{ $data = "2000-01-01";}
 if(isset($_POST["imagem"])){ $imagem = $_POST["imagem"]; }else{ $imagem = null;}
+if(isset($_POST["latitude"]) && ($_POST["longitude"])){ 
+	$latitude = $_POST["latitude"];
+	$longitude = $_POST["longitude"];
+}else{
+	
+        $prepAddr = str_replace(' ','+',$endereco);
+        $geocode=file_get_contents('http://maps.google.com/maps/api/geocode/json?address='.$prepAddr.'&sensor=false');
+        $output= json_decode($geocode);
+        $latitude = $output->results[0]->geometry->location->lat;
+        $longitude = $output->results[0]->geometry->location->lng;
+		
+}
+
+
 
 if(isset($_POST["idade"])){ $idade = $_POST["idade"]; }else{ $idade = 0;}
 if(isset($_POST["nome"])){ $nome = $_POST["nome"]; }else{ $nome = null;}
@@ -40,7 +62,7 @@ if ($conn->query($sql) === TRUE) {
 
 		try{
 			//convertendo imagem para arquivo... Tratar pra caso o HD do servidor esteja cheio :D
-			$ifp = fopen($img_url, "wb"); 
+			$ifp = fopen("../server/imagens/uploads".$img_url, "wb"); 
 			$img = explode(',', $imagem);
 			fwrite($ifp, base64_decode($img[1])); 
 			fclose($ifp); 
