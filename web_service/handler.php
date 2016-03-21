@@ -34,7 +34,7 @@ if ($conn->query($sql) === TRUE) {
 
 		//inserção com imagem
 		$last_id = $conn->insert_id;
-		$img_url = "imagens/".$last_id.".jpg";
+		$img_url = $last_id.".jpg";
 			
 		
 
@@ -44,18 +44,15 @@ if ($conn->query($sql) === TRUE) {
 			$img = explode(',', $imagem);
 			fwrite($ifp, base64_decode($img[1])); 
 			fclose($ifp); 
-			$real_path = realpath($img_url);
-			if($real_path != false){
+			//$real_path = realpath($img_url);
 				
-				$real_path = addslashes($real_path);	
-				$sql2 = "UPDATE reclamacoes SET imagem='$real_path' WHERE id=$last_id";
+				$sql2 = "UPDATE reclamacoes SET imagem='$img_url' WHERE id=$last_id";
 				if ($conn->query($sql2) === TRUE) {
 					echo "ok";
 				} else {
 					echo "Error atualizando endereço da imagem no servidor " . $conn->error;
 				}
 			
-			}	
 		}catch(Exception $e){
 			echo 'Erro em conversão da imagem: ',  $e->getMessage(), "\n";
 		}
