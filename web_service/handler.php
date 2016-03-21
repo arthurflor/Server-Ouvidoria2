@@ -62,7 +62,7 @@ if ($conn->query($sql) === TRUE) {
 
 		try{
 			//convertendo imagem para arquivo... Tratar pra caso o HD do servidor esteja cheio :D
-			$ifp = fopen("../server/imagens/uploads".$img_url, "wb"); 
+			$ifp = fopen("../server/imagens/upload/".$img_url, "wb"); 
 			$img = explode(',', $imagem);
 			fwrite($ifp, base64_decode($img[1])); 
 			fclose($ifp); 

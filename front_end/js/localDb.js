@@ -182,8 +182,8 @@ function postRequest(id, sendData){
 			sendData+= userData;
 			
 		}
-		// var webService = "http://renanfelixrodrigues.com.br/ouvidoria/server.php"; //remoto
-	    var webService = "../web_service/handler.php"; //local
+		 var webService = "http://renanfelixrodrigues.com.br/prefeitura/web_service/handler.php"; //remoto
+	    //var webService = "../web_service/handler.php"; //local
 		alert(webService);
 
 		//alert("Post data: " + sendData);
