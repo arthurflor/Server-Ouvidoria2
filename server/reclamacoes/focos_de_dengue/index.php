@@ -8,8 +8,6 @@
         <?php
             include '../view/head.html'; //cabecalho
         ?>
-
-        <script src="../../js/esconde_reclamacoes.js"></script>
     </head>
     <body>
         

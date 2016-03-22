@@ -19,7 +19,7 @@
 
 		public function reclamacao($dados){
 			
-			$this->reclamacao = '
+			$reclamacao_pagina = '
 					<div id="reclamacao">
 					    <hr>
 					    <h1>Dados da reclamacao:</h1>
@@ -60,7 +60,8 @@
 						</div>
 						<hr>
 				';
-			return $this->reclamacao;
+				$this->reclamacao = $reclamacao_pagina;
+			return $reclamacao_pagina;
 		}
 
 		public function mapa(){
