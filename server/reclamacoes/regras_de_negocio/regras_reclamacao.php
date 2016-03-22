@@ -64,11 +64,13 @@
 				$consulta_sql = "SELECT * FROM reclamacoes WHERE id=$this->id AND user_nome='$this->autor' AND user_email='$this->email' AND data='$this->data' AND latitude=$this->lat AND longitude=$this->long";
 				$resultado_consulta = $this->consultaAoBanco($consulta_sql);
 
-				if($resultado_consulta->num_rows>0){ //os dados correspondem
-					while ($dados = $resultado_consulta->fetch_array()) {
-						$mensagens->reclamacao($dados);
-					}
-					$mensagens->botoesExportar();
+				if(isset($resultado_consulta->num_rows)){
+					if($resultado_consulta->num_rows>0){ //os dados correspondem
+						while ($dados = $resultado_consulta->fetch_array()) {
+							$mensagens->reclamacao($dados);
+						}
+						$mensagens->botoesExportar();
+					} 
 				} else { //nao correspondem
 					$mensagens->reclamacaoInvalida();
 				}

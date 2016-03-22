@@ -207,7 +207,7 @@ class RegrasNegocioLista {
 				} else {
 					$resultado_consulta = $this->consultaAoBanco($this->consulta_sql);
 					
-					if($resultado_consulta->num_rows>0){
+					if(isset($resultado_consulta->num_rows)) {
 						include '../view/tabela.php';
 						$tabela = new Tabela();
 						$tabela->imprimirInfo($this->total_resultados, $this->ultima_pagina);
@@ -235,10 +235,11 @@ class RegrasNegocioLista {
 					//nao tem nada nos parametros
 				} else {
 					$resultado_consulta = $this->consultaAoBanco($this->consulta_sql);
-
-					while ($dados = $resultado_consulta->fetch_array()) {
-						$this->latitudes[] = $dados['latitude'];
-						$this->longitudes[] = $dados['longitude'];
+					if(isset($resultado_consulta->num_rows)){
+						while ($dados = $resultado_consulta->fetch_array()) {
+							$this->latitudes[] = $dados['latitude'];
+							$this->longitudes[] = $dados['longitude'];
+						}
 					}
 				}
 			}
