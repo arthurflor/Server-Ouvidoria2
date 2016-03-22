@@ -70,6 +70,7 @@
 							include '../view/mapa_reclamacao_individual.php';
 							$mensagens->inicioReclamacao();
 							$mensagens->reclamacao($dados);
+							$mensagens->imprimirReclamacao();
 							$mensagens->mapa();
 						}
 						$mensagens->botoesExportar();

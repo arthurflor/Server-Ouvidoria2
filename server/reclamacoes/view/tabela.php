@@ -13,7 +13,7 @@
 		}
 
 		public function imprimirDivReclamacoes(){
-			echo '<div id="reclamacoes_listadas">';
+			echo '<div id="reclamacao_div">';
 		}
 
 		public function imprimirFimDivReclamacoes(){

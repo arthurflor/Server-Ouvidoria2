@@ -2,6 +2,8 @@
 	
 	class MensagensReclamacao{
 
+		private $reclamacoes;
+
 		public function reclamacaoInvalida(){
 			echo "<hr><h3>A reclamacao que voce esta tentando acessar e invalida ou pode ter sido removida da base de dados!</h3>";
 		}
@@ -17,10 +19,10 @@
 
 		public function reclamacao($dados){
 			
-			echo 
-				'	<div id="reclamacao">
+			$this->reclamacao = '
+					<div id="reclamacao">
 					    <hr>
-					    <h3>Dados da reclamacao:</h3>
+					    <h1>Dados da reclamacao:</h1>
 					    <h4>
 					        <hr>
 					        <div class="row">
@@ -56,11 +58,13 @@
 					            </div>
 					        </div>
 						</div>
+						<hr>
 				';
+			return $this->reclamacao;
 		}
 
 		public function mapa(){
-			echo '<hr>
+			echo '
 					<div class="row">
 						<div class="col-sm-2"><h4>Mapa:</h4></div>
 						<div class="col-sm-10">
@@ -82,6 +86,10 @@
 				</div>
 				<hr>
 					';
+		}
+
+		public function imprimirReclamacao(){
+			echo $this->reclamacao;
 		}
 
 	}
