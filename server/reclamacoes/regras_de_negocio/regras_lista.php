@@ -20,6 +20,7 @@ class RegrasNegocioLista {
 	private $numero_pagina;
 	private $ultima_pagina;
 	private $total_resultados;
+	private $quantidade_itens;
 
 	public function receberDados($categoria_desta_pagina){
 
@@ -67,6 +68,11 @@ class RegrasNegocioLista {
 		} else {
 			$this->numero_pagina = $_GET['pagina'];
 		}
+		if (!isset($_GET['itens'])){
+			$this->quantidade_itens = 5;
+		} else {
+			$this->quantidade_itens = $_GET['itens'];
+		}
 
 		include '../../bd/bd.php';
 		$this->bd = new bancoDeDados();
@@ -76,23 +82,39 @@ class RegrasNegocioLista {
 
 
 		private function pegarStringSQL(){
-			$consulta_sql = "SELECT id, user_nome, user_email, data, latitude, longitude FROM reclamacoes WHERE ";
+			$consulta_sql = "SELECT * FROM reclamacoes WHERE ";
 			$contador_parametros_vazios = 0;
 			$coloca_AND = false;
 
 			if(!($this->idade == false)){
-				$consulta_sql = $consulta_sql . "user_idade = $this->idade ";
+				if($this->idade==1){
+					$consulta_sql = $consulta_sql . "(user_idade BETWEEN 0 AND 150) ";
+				} elseif($this->idade==2){
+					$consulta_sql = $consulta_sql . "(user_idade BETWEEN 0 AND 11) ";
+				} elseif($this->idade==3){
+					$consulta_sql = $consulta_sql . "(user_idade BETWEEN 12 AND 17) ";	
+				} elseif($this->idade==4){
+					$consulta_sql = $consulta_sql . "(user_idade BETWEEN 18 AND 25) ";
+				} elseif($this->idade==5){
+					$consulta_sql = $consulta_sql . "(user_idade BETWEEN 26 AND 35) ";
+				} elseif($this->idade==6){
+					$consulta_sql = $consulta_sql . "(user_idade BETWEEN 36 AND 50) ";
+				} elseif($this->idade==7){
+					$consulta_sql = $consulta_sql . "(user_idade BETWEEN 50 AND 150) ";
+				}
 				$coloca_AND = true;
 			} else {
 				$contador_parametros_vazios++;
 			}
 			
 			if(!($this->genero == false)){
-				if($coloca_AND==true){
-					$consulta_sql .= "AND ";
+				if($this->genero!='t'){
+					if($coloca_AND==true){
+						$consulta_sql .= "AND ";
+					}
+					$consulta_sql = $consulta_sql . "user_genero = '$this->genero' ";
+					$coloca_AND = true;
 				}
-				$consulta_sql = $consulta_sql . "user_genero = '$this->genero' ";
-				$coloca_AND = true;
 			} else {
 				$contador_parametros_vazios++;
 			}	
@@ -173,20 +195,28 @@ class RegrasNegocioLista {
 				return false; //coloquei um sql qualquer para de proposito nao dar certo
 			} else {
 				$resultado_consulta = $this->consultaAoBanco($consulta_sql);
-				$this->total_resultados = $resultado_consulta->num_rows;
-				$this->ultima_pagina = ceil($resultado_consulta->num_rows/10);
-
+				
+				if(isset($resultado_consulta->num_rows)){
+					$this->total_resultados = $resultado_consulta->num_rows;
+					$this->ultima_pagina = ceil($resultado_consulta->num_rows/$this->quantidade_itens);
+				} else {
+					return false;
+				}
 	            if($this->numero_pagina==0){
 	            	$this->numero_pagina = 1;
 	            } elseif($this->numero_pagina==$this->ultima_pagina+1){
 	            	$this->numero_pagina = $this->ultima_pagina;
 	            }
 
-				$limEsq = (10*$this->numero_pagina) - 10;
-	            $limDir = (10*$this->numero_pagina);
+	            if($this->quantidade_itens!=1){
+					$limEsq = ($this->quantidade_itens*$this->numero_pagina) - $this->quantidade_itens;
+		            $limDir = ($this->quantidade_itens); //quantos itens quer
 
-				$consulta_sql .= " LIMIT $limEsq , $limDir";
-
+					$consulta_sql .= " LIMIT $limEsq , $limDir";
+				} else {
+					$this->ultima_pagina = 1;
+				}
+				
 				return $consulta_sql;
 			}
 		} 
@@ -200,7 +230,10 @@ class RegrasNegocioLista {
 		public function mostrarTodasReclamacoes(){
 			$sucesso = false;
 
-			if ($_SERVER['REQUEST_METHOD'] == 'GET'){ // se veio de POST e porque tem algo a ser listado
+			if ($_SERVER['REQUEST_METHOD'] == 'GET'){ // se veio de GET e porque tem algo a ser listado
+
+				$this->latitudes = array();
+				$this->longitudes = array();
 
 				if($this->consulta_sql==false){
 					//nao tem nada nos parametros
@@ -210,48 +243,32 @@ class RegrasNegocioLista {
 					if(isset($resultado_consulta->num_rows)) {
 						include '../view/tabela.php';
 						$tabela = new Tabela();
-						$tabela->imprimirInfo($this->total_resultados, $this->ultima_pagina);
-						$tabela->imprimirCabecalho();
+						$tabela->imprimirBotoes();
+						
+						include '../view/mensagens_reclamacao.php';
+						$reclamacao = new MensagensReclamacao();
+						$reclamacao->inicioReclamacao();
 
 						while ($dados = $resultado_consulta->fetch_array()) {
-							$tabela->imprimirCorpo($dados);
+							$tabela->concatenarCorpo($dados);
+							$reclamacao->reclamacao($dados);
+							$this->latitudes[] = $dados['latitude'];
+							$this->longitudes[] = $dados['longitude'];
 						}
-						$tabela->imprimirFim();
-						$tabela->imprimirPaginacao($this->numero_pagina, $this->ultima_pagina);
+
+						$tabela->imprimirFimDivReclamacoes();
+						$reclamacao->botoesExportar();
+						$tabela->imprimirInfo($this->total_resultados, $this->ultima_pagina);
+						$tabela->montarTabela();
+						$tabela->imprimirPaginacao($this->numero_pagina, $this->ultima_pagina, $this->quantidade_itens);
 					}
 				}
 			}
 			//variavel que diz a quantidade de resultados -> $resultado_consulta->num_rows
 		}
 
-
-		private function pegarDadosMapa(){
-			$this->latitudes = array();
-			$this->longitudes = array();
-
-			if ($_SERVER['REQUEST_METHOD'] == 'GET'){ // se veio de POST e porque tem algo a ser listado
-				
-				if($this->consulta_sql==false){
-					//nao tem nada nos parametros
-				} else {
-					$resultado_consulta = $this->consultaAoBanco($this->consulta_sql);
-					if(isset($resultado_consulta->num_rows)){
-						while ($dados = $resultado_consulta->fetch_array()) {
-							$this->latitudes[] = $dados['latitude'];
-							$this->longitudes[] = $dados['longitude'];
-						}
-					}
-				}
-			}
-
-			$this->bd->fecharConexao();
-		}
-
-
 		public function criarMapaReclamacoes(){
 			
-			$this->pegarDadosMapa();
-
 			include '../view/mapa_lista_reclamacoes.php';
 			$mapa = new MapaListaReclamacoes();
 			$mapa->gerarMapa($this->latitudes, $this->longitudes);

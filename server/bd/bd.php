@@ -2,19 +2,19 @@
 
 	class bancoDeDados{
 		
-		/* 
+		
 		//informacoes do banco de dados local
 		private $servidor = "localhost";
 		private $usuario = "root";
 		private $senha = "iago2014";
 		private $banco = "ouvidoria_app";
-		*/
-
+		
+/*
 		private $servidor = "renanfelixrodrigues.com.br";
 		private $usuario = "renan549_1";
 		private $senha = "javac123";
 		private $banco = "renan549_ouvidoria";
-
+*/
 		//variavel de banco de dados
 		private $conn;
 
@@ -40,8 +40,5 @@
 			mysqli_close($this->conn);
 		}
 	}
-
-	$bd = new bancoDeDados();
-	echo $bd->estabelecerConexao();	
 
 ?>

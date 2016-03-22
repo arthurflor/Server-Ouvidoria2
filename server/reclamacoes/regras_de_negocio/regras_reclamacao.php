@@ -67,7 +67,10 @@
 				if(isset($resultado_consulta->num_rows)){
 					if($resultado_consulta->num_rows>0){ //os dados correspondem
 						while ($dados = $resultado_consulta->fetch_array()) {
+							include '../view/mapa_reclamacao_individual.php';
+							$mensagens->inicioReclamacao();
 							$mensagens->reclamacao($dados);
+							$mensagens->mapa();
 						}
 						$mensagens->botoesExportar();
 					} 

@@ -8,6 +8,8 @@
         <?php
             include '../view/head.html'; //cabecalho
         ?>
+
+        <script src="../../js/esconde_reclamacoes.js"></script>
     </head>
     <body>
         
@@ -45,15 +47,23 @@
                                 </div>
                                 <div class="col-sm-1">
                                     <div class="form-group">
-                                        <label for="usr">Idade:</label>
-                                        <input type="text" class="form-control" name="idade">
+                                        <label for="sel1">Faixa Etaria:</label>
+                                        <select class="form-control" name="idade">
+                                            <option value="1">Tudo</option>
+                                            <option value="2">0 ate 11</option>
+                                            <option value="3">12 ate 17</option>
+                                            <option value="4">18 ate 25</option>
+                                            <option value="5">26 ate 35</option>
+                                            <option value="6">36 ate 50</option>
+                                            <option value="7">mais que 50</option>
+                                        </select>
                                     </div>
                                 </div>
                                 <div class="col-sm-1">
                                     <div class="form-group ">
                                         <label for="sel1">Genero:</label>
                                         <select class="form-control" name="genero">
-                                            <option></option>
+                                            <option value="t">Tudo</option>
                                             <option value="m">Masculino</option>
                                             <option value="f">Feminino</option>
                                         </select>
@@ -71,10 +81,22 @@
                                         <input type="text" class="form-control" name="data">
                                     </div>
                                 </div>
-                                <div class="col-sm-2">
+                                <div class="col-sm-1">
                                     <div class="form-group">
                                         <label for="usr">Bairro:</label>
                                         <input type="text" class="form-control" name="bairro">
+                                    </div>
+                                </div>
+                                <div class="col-sm-1">
+                                    <div class="form-group">
+                                        <label for="sel1">Itens/Pagina:</label>
+                                        <select class="form-control" name="itens" required>
+                                            <option value="1">Tudo</option>
+                                            <option value="3">3</option>
+                                            <option value="5">5</option>
+                                            <option value="7">7</option>
+                                            <option value="10">10</option>
+                                        </select>
                                     </div>
                                 </div>
                             </div>
@@ -109,6 +131,9 @@
             </div>
         </div>
         
+        <script src="../../js/opcao_imprimir.js">
+        </script>
+
         <?php
             include '../view/footer.html'; //rodape da pagina
         ?>
