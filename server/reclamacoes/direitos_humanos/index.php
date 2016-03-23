@@ -81,7 +81,6 @@
                             $negocioDH->criarMapaReclamacoes(); 
                         ?>
                         <div class="row">
-                        	<a href="bloco1.txt">Arquivo</a>
                             <div class="col-sm-3"></div>
                             <div class="col-sm-9">
                                 <div id="map" style="width:500px;height:380px;"></div>
