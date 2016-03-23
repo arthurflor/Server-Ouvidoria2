@@ -1,5 +1,5 @@
 <?php
-    session_start(); //inicia sessão, para verificação de login
+	
 ?>
 <!DOCTYPE html>
 <html lang="en">

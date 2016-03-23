@@ -66,14 +66,22 @@
 
 				if(isset($resultado_consulta->num_rows)){
 					if($resultado_consulta->num_rows>0){ //os dados correspondem
+						$nome_arquivo_csv = $this->autor . $this->email . $this->data;
+						$arquivo_csv = "id,user_nome,user_email,user_idade,user_genero,texto,data,categoria,latitude,longitude\n";
+						$ponteiro=fopen("temp/". $nome_arquivo_csv.".csv","w");
+
 						while ($dados = $resultado_consulta->fetch_array()) {
 							include '../view/mapa_reclamacao_individual.php';
 							$mensagens->inicioReclamacao();
 							$mensagens->reclamacao($dados);
 							$mensagens->imprimirReclamacao();
 							$mensagens->mapa();
+							$arquivo_csv .= $dados['id'].','.$dados['user_nome'].','.$dados['user_email'].','.$dados['user_idade'].','.$dados['user_genero'].','.$dados['texto'].','.$dados['data'].','.$dados['categoria'].','.$dados['latitude'].','.$dados['longitude']."\n";
 						}
-						$mensagens->botoesExportar();
+						$exportar_para_csv = true;
+						fwrite($ponteiro, $arquivo_csv);
+
+						$mensagens->botoesExportar($exportar_para_csv, $nome_arquivo_csv);
 					} 
 				} else { //nao correspondem
 					$mensagens->reclamacaoInvalida();

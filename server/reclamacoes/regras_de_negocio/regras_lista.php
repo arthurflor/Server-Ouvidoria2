@@ -9,6 +9,9 @@ class RegrasNegocioLista {
 	private $categoria; 
 	private $bairro; 
 	private $data;
+	private $arquivo_csv;
+	private $exportar_csv;
+	private $nome_arquivo_csv;
 
 	private $bd;
 	private $consulta_sql;
@@ -37,21 +40,25 @@ class RegrasNegocioLista {
 			$this->idade = false;
 		} else {
 			$this->idade = $_GET['idade'];
+			$this->nome_arquivo_csv .= $_GET['idade'];
 		}
 		if(!isset($_GET['genero'])){
 			$this->genero = false;
 		} else {
 			$this->genero = $_GET['genero'];
+			$this->nome_arquivo_csv .= $_GET['genero'];
 		}
 		if(!isset($_GET['email'])){
 			$this->email = false;
 		} else {
 			$this->email = $_GET['email'];
+			$this->nome_arquivo_csv .= $_GET['email'];
 		}
 		if(!isset($_GET['categoria'])){
 			$this->categoria = false;
 		} else {
 			$this->categoria = $_GET['categoria'];
+			$this->nome_arquivo_csv .= $_GET['categoria'];
 			if($_GET['categoria']!=0){
 				$this->categoria = $_GET['categoria'];
 			} else {
@@ -62,23 +69,33 @@ class RegrasNegocioLista {
 			$this->bairro = false;
 		} else {
 			$this->bairro = $_GET['bairro'];
+			$this->nome_arquivo_csv .= $_GET['bairro'];
 		}
 		if(!isset($_GET['data'])){
 			$this->data = false;
 		} else {
 			$this->data = $_GET['data'];
+			$this->nome_arquivo_csv .= $_GET['data'];
 		}
 
 
 		if (!isset($_GET['pagina'])){
 			$this->numero_pagina = 1;
+			$this->nome_arquivo_csv .= 1;
 		} else {
 			$this->numero_pagina = $_GET['pagina'];
+			$this->nome_arquivo_csv .= $_GET['pagina'];
 		}
 		if (!isset($_GET['itens'])){
 			$this->quantidade_itens = 5;
 		} else {
 			$this->quantidade_itens = $_GET['itens'];
+			$this->nome_arquivo_csv .= $_GET['itens'];
+		}
+		if (!isset($_GET['gerar_csv'])){
+			$this->exportar_csv = false;
+		} else {
+			$this->exportar_csv = true;
 		}
 
 		include '../../bd/bd.php';
@@ -86,7 +103,6 @@ class RegrasNegocioLista {
 		$this->bd->estabelecerConexao(); //abre conexao com o BD
 		$this->consulta_sql = $this->pegarStringSQL();
 
-		
 	}
 
 	private function pegarStringSQL(){
@@ -255,12 +271,24 @@ class RegrasNegocioLista {
 
 					$resultado_consulta = $this->consultaAoBanco($this->consulta_sql);
 					if(isset($resultado_consulta->num_rows)) {
-
-						while ($dados = $resultado_consulta->fetch_array()) {
-							$this->tabela->concatenarCorpo($dados); //pegando os dados e colocando na tabela
-							$this->todas_reclamacoes .= $this->reclamacao->reclamacao($dados); //concatenando as reclamacoes
-							$this->latitudes[] = $dados['latitude']; // pegando latitude
-							$this->longitudes[] = $dados['longitude']; //pegando longitude
+						if($this->exportar_csv==false){
+							while ($dados = $resultado_consulta->fetch_array()) {
+								$this->tabela->concatenarCorpo($dados); //pegando os dados e colocando na tabela
+								$this->todas_reclamacoes .= $this->reclamacao->reclamacao($dados); //concatenando as reclamacoes
+								$this->latitudes[] = $dados['latitude']; // pegando latitude
+								$this->longitudes[] = $dados['longitude']; //pegando longitude
+							}
+						} else {
+							$this->arquivo_csv = "id,user_nome,user_email,user_idade,user_genero,texto,data,categoria,latitude,longitude\n";
+							$ponteiro=fopen("temp/". $this->nome_arquivo_csv.".csv","w");
+							while ($dados = $resultado_consulta->fetch_array()) {
+								$this->tabela->concatenarCorpo($dados); //pegando os dados e colocando na tabela
+								$this->todas_reclamacoes .= $this->reclamacao->reclamacao($dados); //concatenando as reclamacoes
+								$this->latitudes[] = $dados['latitude']; // pegando latitude
+								$this->longitudes[] = $dados['longitude']; //pegando longitude
+								$this->arquivo_csv .= $dados['id'].','.$dados['user_nome'].','.$dados['user_email'].','.$dados['user_idade'].','.$dados['user_genero'].','.$dados['texto'].','.$dados['data'].','.$dados['categoria'].','.$dados['latitude'].','.$dados['longitude']."\n";
+							}
+							fwrite($ponteiro, $this->arquivo_csv);
 						}
 
 					}
@@ -268,19 +296,6 @@ class RegrasNegocioLista {
 				}
 			}
 			//variavel que diz a quantidade de resultados -> $resultado_consulta->num_rows
-		}
-
-		public function listarReclamacoes(){
-
-			if($this->resultado_processamento_dados==true){
-				$this->tabela->imprimirDivReclamacoes();
-				echo $this->todas_reclamacoes;
-				$this->tabela->imprimirFimDivReclamacoes();
-				$this->reclamacao->botoesExportar();
-			} else {
-				//retornar mensagem de erro
-				return false;
-			}
 		}
 
 		public function gerarTabela(){
@@ -295,6 +310,20 @@ class RegrasNegocioLista {
 				return false;
 			}
 
+		}
+
+		public function listarReclamacoes(){
+
+			if($this->resultado_processamento_dados==true){
+				$this->reclamacao->botoesExportar($this->exportar_csv, $this->nome_arquivo_csv);
+				$this->tabela->imprimirDivReclamacoes();
+				echo $this->todas_reclamacoes;
+				$this->tabela->imprimirFimDivReclamacoes();
+				//$this->reclamacao->botoesExportar($this->exportar_csv, $this->nome_arquivo_csv);
+			} else {
+				//retornar mensagem de erro
+				return false;
+			}
 		}
 
 		public function criarMapaReclamacoes(){

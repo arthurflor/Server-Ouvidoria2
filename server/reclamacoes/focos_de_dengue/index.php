@@ -53,46 +53,9 @@
                                         </select>
                                     </div>
                                 </div>
-                                <div class="col-sm-1">
-                                    <div class="form-group ">
-                                        <label for="sel1">Genero:</label>
-                                        <select class="form-control" name="genero">
-                                            <option value="t">Tudo</option>
-                                            <option value="m">Masculino</option>
-                                            <option value="f">Feminino</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="col-sm-2">
-                                    <div class="form-group">
-                                        <label for="usr">Email:</label>
-                                        <input type="text" class="form-control" name="email">
-                                    </div>
-                                </div>
-                                <div class="col-sm-2">
-                                    <div class="form-group">
-                                        <label for="usr">Data:</label>
-                                        <input type="text" class="form-control" name="data">
-                                    </div>
-                                </div>
-                                <div class="col-sm-1">
-                                    <div class="form-group">
-                                        <label for="usr">Bairro:</label>
-                                        <input type="text" class="form-control" name="bairro">
-                                    </div>
-                                </div>
-                                <div class="col-sm-1">
-                                    <div class="form-group">
-                                        <label for="sel1">Itens/Pagina:</label>
-                                        <select class="form-control" name="itens" required>
-                                            <option value="3">3</option>
-                                            <option value="5">5</option>
-                                            <option value="7">7</option>
-                                            <option value="10">10</option>
-                                            <option value="1">Tudo</option>
-                                        </select>
-                                    </div>
-                                </div>
+                                <?php
+                                    include '../view/componentes_formulario.html';
+                                ?>
                             </div>
                             <button class="btn btn-primary" type="submit">Pesquisar!</button>
                         </form>

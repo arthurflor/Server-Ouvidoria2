@@ -75,14 +75,22 @@
 				</div><!--finalizando a div do mapa-->';
 		}
 
-		public function botoesExportar(){
+		public function botoesExportar($exportar_csv, $nome_arquivo_csv){
 			echo
 				'
 				<hr><div class="row">
 					<div class="col-sm-2"><h4>Exportar Tudo:</h4></div>
 					<div class="col-sm-10">
 						<button class="btn btn-primary" id="botao_imprimir">Imprimir</button>
-						<button class="btn btn-primary" id="botao_CSV">CSV</button>
+						';
+			
+			if($exportar_csv==true){
+				echo '
+				<a class="btn btn-primary" href="temp/'.$nome_arquivo_csv.'.csv" id="botao_CSV">CSV</a>
+				';
+			}
+			
+			echo '
 					</div>
 				</div>
 				<hr>
