@@ -284,7 +284,7 @@ class RegrasNegocioLista {
 							}
 						} else {
 							$this->arquivo_csv = "id,user_nome,user_email,user_idade,user_genero,texto,data,categoria,latitude,longitude\n";
-							$ponteiro=fopen("temp/". $this->nome_arquivo_csv.".csv","w");
+							$ponteiro=fopen("../temp/". $this->nome_arquivo_csv.".csv","w");
 							while ($dados = $resultado_consulta->fetch_array()) {
 								$this->tabela->concatenarCorpo($dados); //pegando os dados e colocando na tabela
 								$this->todas_reclamacoes .= $this->reclamacao->reclamacao($dados); //concatenando as reclamacoes

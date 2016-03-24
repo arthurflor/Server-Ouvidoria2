@@ -86,7 +86,7 @@
 			
 			if($exportar_csv==true){
 				echo '
-				<a class="btn btn-primary" href="temp/'.$nome_arquivo_csv.'.csv" id="botao_CSV">CSV</a>
+				<a class="btn btn-primary" href="../temp/'.$nome_arquivo_csv.'.csv" id="botao_CSV">CSV</a>
 				';
 			}
 			

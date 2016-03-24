@@ -68,7 +68,7 @@
 					if($resultado_consulta->num_rows>0){ //os dados correspondem
 						$nome_arquivo_csv = $this->autor . $this->email . $this->data;
 						$arquivo_csv = "id,user_nome,user_email,user_idade,user_genero,texto,data,categoria,latitude,longitude\n";
-						$ponteiro=fopen("temp/". $nome_arquivo_csv.".csv","w");
+						$ponteiro=fopen("../temp/". $nome_arquivo_csv.".csv","w");
 
 						while ($dados = $resultado_consulta->fetch_array()) {
 							include '../view/mapa_reclamacao_individual.php';
