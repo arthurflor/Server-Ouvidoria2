@@ -39,20 +39,6 @@
                                         </select>
                                     </div>
                                 </div>
-                                <div class="col-sm-1">
-                                    <div class="form-group">
-                                        <label for="sel1">Faixa Etaria:</label>
-                                        <select class="form-control" name="idade">
-                                            <option value="1">Tudo</option>
-                                            <option value="2">0 ate 11</option>
-                                            <option value="3">12 ate 17</option>
-                                            <option value="4">18 ate 25</option>
-                                            <option value="5">26 ate 35</option>
-                                            <option value="6">36 ate 50</option>
-                                            <option value="7">mais que 50</option>
-                                        </select>
-                                    </div>
-                                </div>
                                 <?php
                                     include '../view/componentes_formulario.html';
                                 ?>
@@ -73,7 +59,7 @@
                         
                         <div class="tab-content">
                             <div id="tabela" class="tab-pane fade in active">
-                                <h3>Tabela com reclamacoes:</h3>
+                                
                                 <p><?php $negocioDengue->gerarTabela(); ?></p>
                             </div>
                             <div id="listar" class="tab-pane fade">

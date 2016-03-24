@@ -4,12 +4,8 @@
 		
 		private $corpo_tabela;
 
-		public function imprimirBotoes(){
-			echo '
-				<hr>
-				<button id="mostrar_reclamacoes" class="btn btn-primary">Visualizar Todas as Reclamacoes a Seguir</button>
-			    <button id="ocultar_reclamacoes" class="btn btn-primary">Ocultar Reclamacoes</button>
-				';
+		public function imprimirMensagemErro(){
+			echo "<h3>Selecione os parametros de pesquisa e clique em \"Pesquisar!\"</h3>";
 		}
 
 		public function imprimirDivReclamacoes(){
@@ -74,15 +70,16 @@
 						<a class="btn btn-primary" href="index.php?categoria='.$_GET['categoria'].'&idade='.$_GET['idade'].'&genero='.$_GET['genero'].'&email='.$_GET['email'].'&data='.$_GET['data'].'&bairro='.$_GET['bairro'].'&pagina=1&itens='.$itens.'">Primeiro</a>
 						<a href="index.php?categoria='.$_GET['categoria'].'&idade='.$_GET['idade'].'&genero='.$_GET['genero'].'&email='.$_GET['email'].'&data='.$_GET['data'].'&bairro='.$_GET['bairro'].'&pagina='. ($atual-1) .'&itens='.$itens.'"><img src="../../imagens/seta_esquerda.png" /></a>
 						<a href="index.php?categoria='.$_GET['categoria'].'&idade='.$_GET['idade'].'&genero='.$_GET['genero'].'&email='.$_GET['email'].'&data='.$_GET['data'].'&bairro='.$_GET['bairro'].'&pagina='. ($atual+1) .'&itens='.$itens.'"><img src="../../imagens/seta_direita.png" /></a>
-						<a class="btn btn-primary" href="index.php?categoria='.$_GET['categoria'].'&idade='.$_GET['idade'].'&genero='.$_GET['genero'].'&email='.$_GET['email'].'&data='.$_GET['data'].'&bairro='.$_GET['bairro'].'&pagina='.$ultimo.'&itens='.$itens.'">Ultimo</a>
+						<a class="btn btn-primary" href="index.php?categoria='.$_GET['categoria'].'&idade='.$_GET['idade'].'&genero='.$_GET['genero'].'&email='.$_GET['email'].'&data='.$_GET['data'].'&bairro='.$_GET['bairro'].'&pagina='.$ultimo.'&itens='.$_GET['itens'].'">Ultimo</a>
 						<br>
 						Ou digite o numero da pagina que deseja: 
 							<div class="form-group">
-								<input type="text" class="form-control" id="pagina">
-								<a class="btn btn-primary" href="index.php?categoria='.$_GET['categoria'].'&idade='.$_GET['idade'].'&genero='.$_GET['genero'].'&email='.$_GET['email'].'&data='.$_GET['data'].'&bairro='.$_GET['bairro']."&pagina=document.getElementById(\"pagina\").value".'>Ir</a>
+								<input type="text" class="form-control" id="outra_pagina">
+								<button class="btn btn-primary" id="botao_outra_pagina">Ir</a>
 							</div>
 					</div>
 				</div>';
+			include '../view/script_ir_para_pagina.html';
 		} //ir para pagina 'x' nao implementado
 
 	}

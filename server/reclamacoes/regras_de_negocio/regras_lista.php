@@ -160,15 +160,18 @@ class RegrasNegocioLista {
 			if($this->categoria == 100){
 				if($this->categoria_da_pagina==0){
 					$this->categoria = 0;
+					echo "autorizado para dengue";
 					$autorizado = true;
 				}
 			} elseif($this->categoria>=1 && $this->categoria<=17){
 				if($this->categoria_da_pagina==1){
 					$autorizado = true;
+					echo "autorizado para ouvidoria";
 				}
 			} elseif($this->categoria>=18 && $this->categoria<=21){
 				if($this->categoria_da_pagina==2){
 					$autorizado = true;
+					echo "autorizado para DH";
 				}
 			}
 
@@ -180,26 +183,27 @@ class RegrasNegocioLista {
 				$coloca_AND = true;
 			} else {
 				$contador_parametros_vazios++;
+				return false;
 			}
-			} elseif ($this->categoria == 30){ //todas as categorias
-				if($this->categoria_da_pagina==1){
-					if($coloca_AND==true){
-						$consulta_sql .= "AND ";
-					} 
-					$consulta_sql = $consulta_sql . "(categoria = 1 OR categoria = 2 OR categoria = 3 OR categoria = 4 OR categoria = 5 OR categoria = 6 OR categoria = 7 OR categoria = 8 OR categoria = 9 OR categoria = 10 OR categoria = 11 OR categoria = 12 OR categoria = 13 OR categoria = 14 OR categoria = 15 OR categoria = 16 OR categoria = 17) ";
-					$coloca_AND = true;
-				}
-			} elseif($this->categoria == 35){ 
-				if ($this->categoria_da_pagina==2) {
-					if($coloca_AND==true){
-						$consulta_sql .= "AND ";
-					}
-					$consulta_sql = $consulta_sql . "(categoria = 18 OR categoria = 19 OR categoria = 20 OR categoria = 21) ";
-					$coloca_AND = true;
+		} elseif ($this->categoria == 30){ //todas as categorias
+			if($this->categoria_da_pagina==1){
+				if($coloca_AND==true){
+					$consulta_sql .= "AND ";
 				} 
-			} else {
-				$contador_parametros_vazios++;
+				$consulta_sql = $consulta_sql . "(categoria = 1 OR categoria = 2 OR categoria = 3 OR categoria = 4 OR categoria = 5 OR categoria = 6 OR categoria = 7 OR categoria = 8 OR categoria = 9 OR categoria = 10 OR categoria = 11 OR categoria = 12 OR categoria = 13 OR categoria = 14 OR categoria = 15 OR categoria = 16 OR categoria = 17) ";
+				$coloca_AND = true;
 			}
+		} elseif($this->categoria == 35){ 
+			if ($this->categoria_da_pagina==2) {
+				if($coloca_AND==true){
+					$consulta_sql .= "AND ";
+				}
+				$consulta_sql = $consulta_sql . "(categoria = 18 OR categoria = 19 OR categoria = 20 OR categoria = 21) ";
+				$coloca_AND = true;
+			} 
+		} else {
+			$contador_parametros_vazios++;
+		}
 			/*
 			if($this->bairro == false)){
 				$consulta_sql = $consulta_sql . "AND  = user_idade ";
@@ -217,7 +221,7 @@ class RegrasNegocioLista {
 			}
 
 			if($contador_parametros_vazios==5){ //ira contar quantos parametros estao vazios, se for igual a 5, quer dizer q nao vai precisar fazer uma consulta normal
-				$consulta_sql = "SELECT * FROM reclamacoes"; 
+				return false;
 			} else {
 				$resultado_consulta = $this->consultaAoBanco($consulta_sql);
 				
@@ -258,18 +262,18 @@ class RegrasNegocioLista {
 				$this->latitudes = array();
 				$this->longitudes = array();
 
+				include '../view/tabela.php';
+				$this->tabela = new Tabela();
+				
+				include '../view/mensagens_reclamacao.php';
+				$this->reclamacao = new MensagensReclamacao();
+				
 				if($this->consulta_sql==false){
 					return false;
 				} else {
 					
-					include '../view/tabela.php';
-					$this->tabela = new Tabela();
-					
-					include '../view/mensagens_reclamacao.php';
-					$this->reclamacao = new MensagensReclamacao();
-				
-
 					$resultado_consulta = $this->consultaAoBanco($this->consulta_sql);
+					
 					if(isset($resultado_consulta->num_rows)) {
 						if($this->exportar_csv==false){
 							while ($dados = $resultado_consulta->fetch_array()) {
@@ -306,7 +310,7 @@ class RegrasNegocioLista {
 				$this->tabela->montarTabela();
 				$this->tabela->imprimirPaginacao($this->numero_pagina, $this->ultima_pagina, $this->quantidade_itens);
 			} else {
-				//retornar mensagem de erro
+				$this->tabela->imprimirMensagemErro();
 				return false;
 			}
 
@@ -321,7 +325,7 @@ class RegrasNegocioLista {
 				$this->tabela->imprimirFimDivReclamacoes();
 				//$this->reclamacao->botoesExportar($this->exportar_csv, $this->nome_arquivo_csv);
 			} else {
-				//retornar mensagem de erro
+				$this->tabela->imprimirMensagemErro();
 				return false;
 			}
 		}
