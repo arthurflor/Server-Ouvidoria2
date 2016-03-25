@@ -1,0 +1,3 @@
+Para testar esse arquivo, crie um banco de dados com o nome "programacao" e execute o sql presente no arquivo atracao.sql
+
+Se quiser alterar as configurações da conexão do banco de dados, é só mexer no arquivo conexão.php
