@@ -53,13 +53,13 @@
 					
 					";
 					
-					echo $row['nome']." - ".date('h:i', strtotime($row['hora']))."<br>";
+					echo $row['nome']." - ".date('h:i', strtotime($row['hora']))."<br><br>";
 					
 				}
 				
 				else{
 					
-					echo $row['nome']." - ".date('h:i', strtotime($row['hora']))."<br>";
+					echo $row['nome']." - ".date('h:i', strtotime($row['hora']))."<br><br>";
 					
 				}
 			}// fim do while
