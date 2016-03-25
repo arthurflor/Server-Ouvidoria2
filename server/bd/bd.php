@@ -1,5 +1,18 @@
 <?php
-
+        /**
+         * Classe responsável pela conexão de banco de dados.
+         * @author Iago Rodrigues
+         * Testes: Guto Leoni e Leylane Ferreira
+         * Primeira versão estável: 0.1 (antes da primeira bateria de testes)
+         * 
+         * Esta classe faz parte do conjunto de arquivos que formam o servidor
+         * do App da Ouvidoria do Gabinete Digital da Prefeitura Municipal de 
+         * Caruaru. 
+         * Sistema (app cliente e sistema de relatórios) desenvolvido pela equipe 
+         * de estágio do 7º Período da Universidade de Pernambuco - Caruaru.
+         * Equipe: Arthur Flôr, Guto Leoni, Iago Rodrigues, Leylane Ferreira e
+         * Renan Félix.
+         */
 	class bancoDeDados{
 		
 		/*
@@ -15,16 +28,19 @@
 		private $senha = "javac123";
 		private $banco = "renan549_ouvidoria";
 
-		//variavel de banco de dados
-		private $conn;
-
+		private $conn; //variável de banco de dados
+                
+                /**
+                 * Método que pega o valor da conexão.
+                 * @return Retorna a conexão, pelo fato da mesma estar encapsulada.
+                 */
 		public function getConn(){
 			return $this->conn;
 		}
 
 		/**
-		 * Metodo que estabelece conexao com banco de dados.
-		 * Retorno - 'true' para sucesso e 'false' para falha.
+		 * Metodo que estabelece a conexão com banco de dados.
+		 * @return 'true' para sucesso e 'false' para falha.
 		 */
 		public function estabelecerConexao(){
 			$this->conn = new mysqli($this->servidor, $this->usuario, $this->senha, $this->banco);
@@ -35,7 +51,9 @@
 				return true;
 			}
 		}
-
+                /**
+                 * Método que encerra a conexão com o banco de dados.
+                 */
 		public function fecharConexao(){
 			mysqli_close($this->conn);
 		}
