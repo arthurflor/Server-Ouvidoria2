@@ -32,9 +32,9 @@
 											<input type="date" id="data1" name="data" style="min-width:300px;" required><br> 
 											
 											<label>Selecione a hora da atração: </label>
-											<input type="time" id="hora1" name="hora" style="min-width:300px;" required><br> 
+											<input type="time" id="hora1" name="hora" style="min-width:30px;" required><br> 
 											
-											<br><input class="btn btn-success"  type="submit" value="Cadastrar">
+											<br><input style="min-width:100px;" class="btn btn-success"  type="submit" value="Cadastrar">
 										
 										</form>
 									</div>
@@ -49,7 +49,7 @@
 					
 					<form action="listar.php" method="post">
 					
-						<input class="btn btn-primary" type="submit" value="Listar">
+						<input style="min-width:100px;" class="btn btn-primary" type="submit" value="Listar">
 					
 					
 					</form>

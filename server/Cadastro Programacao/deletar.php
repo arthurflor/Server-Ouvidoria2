@@ -37,7 +37,7 @@
 		
     }
 	else{
-		echo "checkbox não marcado! <br/>";
+		echo "Nenhuma opção selecionada! <br/>";
 	}
 
 ?>

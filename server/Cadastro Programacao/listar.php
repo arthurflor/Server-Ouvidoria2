@@ -42,13 +42,13 @@ $result = mysqli_query($conn,$sql);
  echo "<tr>";
  echo "<td>  <input type='radio' name='opcao' value= '" . $row['id'] . "'> </td>";
  echo "<td>" . $row['nome'] . " </td>";
- echo "<td>" . $row['data'] . " </td>";
- echo "<td>" . $row['hora'] . " </td>";
+ echo "<td>" . date('d/m/y', strtotime($row['data'])) . " </td>";
+ echo "<td>" . date('h:i', strtotime($row['hora'])). " </td>";
  echo "</tr>";
  }
  echo "</table>
  <br>
- <input class='btn btn-danger' type='submit' value='Deletar'> 
+ <input style='min-width:100px;' class='btn btn-danger' type='submit' value='Deletar'> 
  </form>
  
   <form action = 'index.php' method = 'post'>
