@@ -1,3 +1,3 @@
-Para testar esse arquivo, crie um banco de dados com o nome "programacao" e execute o sql presente no arquivo atracao.sql
+Para testar, crie um banco de dados com o nome "programacao" e execute o sql presente no arquivo atracao.sql
 
-Se quiser alterar as configuraÁıes da conex„o do banco de dados, È sÛ mexer no arquivo conex„o.php
+Se quiser alterar as configura√ß√µes da conex√£o do banco de dados, √© s√≥ mexer no arquivo conex√£o.php
