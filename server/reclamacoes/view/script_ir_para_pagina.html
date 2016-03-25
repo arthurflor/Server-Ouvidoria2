@@ -16,7 +16,7 @@
 
             function irPara(){
                 var valor_text_box = document.getElementById("outra_pagina").value;
-                var link = "index.php?categoria="+ getParameterByName('categoria') + "&idade=" + getParameterByName('idade') + "&genero=" + getParameterByName('genero') + "&email=" + getParameterByName('email') + "&data=" + getParameterByName('data') + "&bairro=" + getParameterByName('bairro') + "&pagina=" + valor_text_box + "&itens=" + getParameterByName('itens');
+                var link = "index.php?categoria="+ getParameterByName('categoria') + "&idade=" + getParameterByName('idade') + "&genero=" + getParameterByName('genero') + "&email=" + getParameterByName('email') + "&data=" + getParameterByName('data') + "&bairro=" + getParameterByName('bairro') + "&pagina=" + valor_text_box + "&itens=" + getParameterByName('itens') + "&gerar_csv=" + getParameterByName('gerar_csv');
                 //alert(link);
                 window.location = link;
             }

@@ -93,9 +93,9 @@ class RegrasNegocioLista {
 			$this->nome_arquivo_csv .= $_GET['itens'];
 		}
 		if (!isset($_GET['gerar_csv'])){
-			$this->exportar_csv = false;
+			$this->exportar_csv = 'nao';
 		} else {
-			$this->exportar_csv = true;
+			$this->exportar_csv = 'sim';
 		}
 
 		include '../../bd/bd.php';
@@ -160,18 +160,15 @@ class RegrasNegocioLista {
 			if($this->categoria == 100){
 				if($this->categoria_da_pagina==0){
 					$this->categoria = 0;
-					echo "autorizado para dengue";
 					$autorizado = true;
 				}
 			} elseif($this->categoria>=1 && $this->categoria<=17){
 				if($this->categoria_da_pagina==1){
 					$autorizado = true;
-					echo "autorizado para ouvidoria";
 				}
 			} elseif($this->categoria>=18 && $this->categoria<=21){
 				if($this->categoria_da_pagina==2){
 					$autorizado = true;
-					echo "autorizado para DH";
 				}
 			}
 
@@ -275,7 +272,7 @@ class RegrasNegocioLista {
 					$resultado_consulta = $this->consultaAoBanco($this->consulta_sql);
 					
 					if(isset($resultado_consulta->num_rows)) {
-						if($this->exportar_csv==false){
+						if(!strcmp($this->exportar_csv, "nao")){
 							while ($dados = $resultado_consulta->fetch_array()) {
 								$this->tabela->concatenarCorpo($dados); //pegando os dados e colocando na tabela
 								$this->todas_reclamacoes .= $this->reclamacao->reclamacao($dados); //concatenando as reclamacoes
@@ -308,7 +305,7 @@ class RegrasNegocioLista {
 			if($this->resultado_processamento_dados==true){
 				$this->tabela->imprimirInfo($this->total_resultados, $this->ultima_pagina);
 				$this->tabela->montarTabela();
-				$this->tabela->imprimirPaginacao($this->numero_pagina, $this->ultima_pagina, $this->quantidade_itens);
+				$this->tabela->imprimirPaginacao($this->numero_pagina, $this->ultima_pagina, $this->quantidade_itens, $this->exportar_csv);
 			} else {
 				$this->tabela->imprimirMensagemErro();
 				return false;

@@ -77,7 +77,6 @@
                         
                         <div class="tab-content">
                             <div id="tabela" class="tab-pane fade in active">
-                                <h3>Tabela com reclamacoes:</h3>
                                 <p><?php $negocioOuvidoria->gerarTabela(); ?></p>
                             </div>
                             <div id="listar" class="tab-pane fade">
