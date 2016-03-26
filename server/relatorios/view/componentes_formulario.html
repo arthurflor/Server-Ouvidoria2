@@ -2,7 +2,7 @@
                                     <div class="form-group">
                                         &nbsp;&nbsp;&nbsp;&nbsp;
                                         &nbsp;&nbsp;&nbsp;&nbsp;
-                                        <label><input type="radio" name="opcao" value="user_idade">Faixa Etaria</label>
+                                        <label><input type="radio" name="opcao" value="user_idade" required>Faixa Etaria</label>
                                     </div>
                                 </div>
                                 <div class="col-sm-1">
@@ -23,5 +23,25 @@
                                 <div class="col-sm-1">
                                     <div class="form-group">
                                         <label><input type="radio" name="opcao" value="bairro">Bairro</label>
+                                    </div>
+                                </div>
+
+                                <div id="div_opcao_user_idade" class="desc">
+                                    <div class="col-xs-2">
+                                        <div class="form-group">
+                                            <label for="usr">Faixa Etaria:</label>
+                                            <input type="text" class="form-control" name="idade1" placeholder="Idade1. Ex.: 0" maxlength="3">
+                                            <input type="text" class="form-control" name="idade2" placeholder="Idade2. Ex.: 120" maxlength="3">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div id="div_opcao_data" class="desc">
+                                    <div class="col-xs-2">
+                                        <div class="form-group">
+                                            <label for="usr">Periodo:</label>
+                                            <input type="text" class="form-control" name="data1" placeholder="Data1. Ex.: 2016-05-01" maxlength="10">
+                                            <input type="text" class="form-control" name="data2" placeholder="Data2. Ex.: 2017-05-01" maxlength="10">
+                                        </div>
                                     </div>
                                 </div>

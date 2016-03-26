@@ -6,8 +6,12 @@
 <html lang="en">
     <head>
         <?php
-             include '../../reclamacoes/view/head.html'; //mostra os erros de php da pagina
+            include '../../reclamacoes/view/head.html'; //mostra os erros de php da pagina
         ?>
+        <script src="../../js/alterna_div_graficos.js"> //alternacao de divs no formulario, de acordo com o radio button
+        </script>
+        <script src="../../js/Chart.js"> //script dos graficos
+        </script> 
     </head>
     <body>
 
@@ -57,6 +61,7 @@
                             $negocioDH = new RegrasNegocioRelatorio();
                             $negocioDH->receberDados($categoria_desta_pagina);
                             $negocioDH->processarDados();
+                            $negocioDH->construirGrafico();
                         ?>
 
                         <hr>
@@ -67,13 +72,13 @@
                         </div>
                         <?php 
                             //$negocioDH->criarMapaReclamacoes(); 
-                        ?>
+                        ?><!--
                         <div class="row">
                             <div class="col-sm-3"></div>
                             <div class="col-sm-9">
                                 <div id="map" style="width:500px;height:380px;"></div>
                             </div>
-                        </div>
+                        </div>-->
                         <hr>
                     </p>
                 </div>

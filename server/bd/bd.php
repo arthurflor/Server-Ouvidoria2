@@ -15,19 +15,19 @@
          */
 	class bancoDeDados{
 		
-		/*
+		
 		//informacoes do banco de dados local
 		private $servidor = "localhost";
 		private $usuario = "root";
 		private $senha = "iago2014";
 		private $banco = "ouvidoria_app";
-		*/
-
+		
+/*
 		private $servidor = "renanfelixrodrigues.com.br";
 		private $usuario = "renan549_1";
 		private $senha = "javac123";
 		private $banco = "renan549_ouvidoria";
-
+*/
 		private $conn; //variável de banco de dados
                 
                 /**

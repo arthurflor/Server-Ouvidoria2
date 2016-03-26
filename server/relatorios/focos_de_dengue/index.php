@@ -8,6 +8,8 @@
         <?php
              include '../../reclamacoes/view/head.html'; //mostra os erros de php da pagina
         ?>
+        <script src="../../js/alterna_div_graficos.js"> //alternacao de divs no formulario, de acordo com o radio button
+        </script>
     </head>
     <body>
 
@@ -54,6 +56,9 @@
                         <?php
                             include '../regras_de_negocio/regras_relatorio.php'; //regra de negocio
                             $negocioDengue = new RegrasNegocioRelatorio();
+                            $negocioDengue->receberDados($categoria_desta_pagina);
+                            $negocioDengue->processarDados();
+                            $negocioDengue->construirGrafico();
                             //$negocioDH->receberDados($categoria_desta_pagina);
                         ?>
 
