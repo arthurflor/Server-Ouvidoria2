@@ -1,128 +1,109 @@
 <?php
-session_start(); //inicia sessão, para verificação de login
+$titulo_da_pagina = 'Página Inicial - Ouvidoria 2.0';
+$pasta_raiz_site = '';
+$pasta_reclamacoes = 'reclamacoes/';
+$pasta_graficos = 'graficos/';
 ?>
 <!DOCTYPE html>
 <html lang="en">
-    <!-- ESSA PÁGINA E TODAS AS OUTRAS DESTE SISTEMA TEM O TEMPLATE DA W3SCHOOLS -->
-    <!-- página inicial -->
-    <head>
-        <title>Página Inicial - Ouvidoria 2.0</title>
+<!-- ESSA PÁGINA E TODAS AS OUTRAS DESTE SISTEMA TEM O TEMPLATE DA W3SCHOOLS -->
+<!-- página inicial -->
+<head>
+	
+    <?php include 'MVC/View/estrutura_site/head.php';?>
 
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        .slider-size {
+            height: 400px; /* This is your slider height */
+        }
+        .carousel {
+            width:100%; 
+            margin:0 auto; /* center your carousel if other than 100% */ 
+        }
+    </style>
 
-        <link rel="stylesheet" href="css/bootstrap.min.css">
-        <!-- Esse style abaixo é para mudar a cor de alguns componentes, vem por padrão -->
-        <link rel="stylesheet" href="css/newStyle.css">
-        
-        <script src="js/jquery.min.js"></script>
-        <script src="js/bootstrap.min.js"></script> 
+ <link rel="shortcut icon" href="/images/logo.ico">
+</head>
+<body>
+	<?php include 'MVC/View/estrutura_site/navbar.php';?>
+    <div class="container-fluid text-center">    
+       <div class="row content">
 
-        <link rel="shortcut icon" href="/images/logo.ico">
-    </head>
-    <body>
-        <!-- logo -->
-        <div class="row">
-            <div class="container-fluid">
-                <a href="#">
-                    <img src="imagens/logo.png" alt="logo"/>
-                </a>
+          <?php include 'MVC/View/estrutura_site/barra_esquerda.html'; ?>
+
+            <!-- centro da página (horizontalmente falando) -->
+            <div class="col-sm-10 text-left">
+            	<hr>
+            	<h1>Bem vindo ao sistema!</h1> 
+            	<hr>
+            	<h2>Confira as Ultimas Reclamacoes:</h2>
+            	<hr>
+
+            	<div id="myCarousel" class="carousel slide" data-ride="carousel">
+            		<!-- Indicators -->
+            		<ol class="carousel-indicators">
+            			<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+            			<li data-target="#myCarousel" data-slide-to="1"></li>
+            			<li data-target="#myCarousel" data-slide-to="2"></li>
+            			<li data-target="#myCarousel" data-slide-to="3"></li>
+            		</ol>
+
+            		<!-- Wrapper for slides -->
+            		<div class="carousel-inner" role="listbox">
+            			
+            			<div class="item active">
+            				<div style="background:url(http://random-ize.com/lorem-ipsum-generators/lorem-ipsum/lorem-ipsum.jpg) center center; background-size:cover;" class="slider-size">
+            					<div class="carousel-caption">
+            						<h3>Flowers</h3>
+            						<p>Beatiful flowers in Kolymbari, Crete.</p>
+            					</div>
+            				</div>
+            			</div>
+
+            			<div class="item">
+            				<div style="background:url(http://www.eleonoraanzini.com/wp-content/uploads/2011/04/026C_Keep_Calm_and_Lorem_Ipsum_web.jpg) center center; background-size:cover;" class="slider-size">
+            					<div class="carousel-caption">
+            						<h3>Flowers</h3>
+            						<p>Beatiful flowers in Kolymbari, Crete.</p>
+            					</div>
+            				</div>
+            			</div>
+            			<div class="item">
+            				<div style="background:url(http://www.blogwebdesignmicrocamp.com.br/wp-content/uploads/2015/12/13.jpg) center center; background-size:cover;" class="slider-size">
+            					<div class="carousel-caption">
+            						<h3>Flowers</h3>
+            						<p>Beatiful flowers in Kolymbari, Crete.</p>
+            					</div>
+            				</div>
+            			</div>
+            			<div class="item">
+            				<div style="background:url(http://www.raywhite.com.lb/wp-content/uploads/2015/03/loremipsumtext.jpg) center center; background-size:cover;" class="slider-size">
+            					<div class="carousel-caption">
+            						<h3>Flowers</h3>
+            						<p>Beatiful flowers in Kolymbari, Crete.</p>
+            					</div>
+            				</div>
+            			</div>
+            		</div>
+
+            		<!-- Left and right controls -->
+            		<a class="left carousel-control" href="javascript:void(0)" data-slide="prev" data-target="#myCarousel">
+            			<span class="glyphicon glyphicon-chevron-left"></span>
+            		</a>
+            		<a class="right carousel-control" href="javascript:void(0)" data-slide="next" data-target="#myCarousel">
+            			<span class="glyphicon glyphicon-chevron-right"></span>
+            		</a>
+            	</div>
+            	
+            	<hr>
+
             </div>
+
+            <?php include 'MVC/View/estrutura_site/barra_direita.html'; ?>
         </div>
+    </div>
 
-        <!-- Barra de menu -->
-        <nav class="navbar navbar-inverse">
-            <div class="container-fluid">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>                        
-                    </button>
-                </div>
-                <div class="collapse navbar-collapse" id="myNavbar">
-                    <ul class="nav navbar-nav">
-                        <li><a href="#">Início</a></li>
-                        <li class="dropdown">
-                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">Reclamações
-                            <span class="caret"></span></a>
-                            <ul class="dropdown-menu">
-                              <li><a href="reclamacoes/direitos_humanos/">Direitos Humanos</a></li>
-                              <li><a href="reclamacoes/focos_de_dengue/">Focos de Dengue</a></li> 
-                              <li><a href="reclamacoes/ouvidoria/">Ouvidoria</a></li> 
-                            </ul>
-                        </li>
-                        <li class="dropdown">
-                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">Relatórios
-                            <span class="caret"></span></a>
-                            <ul class="dropdown-menu">
-                              <li><a href="relatorios/direitos_humanos/">Direitos Humanos</a></li>
-                              <li><a href="relatorios/focos_de_dengue">Focos de Dengue</a></li> 
-                              <li><a href="relatorios/ouvidoria">Ouvidoria</a></li> 
-                            </ul>
-                        </li>
-                        <li><a href="contato/">Contato</a></li>
-                    </ul>
-                    <ul class="nav navbar-nav navbar-right">
-                        <li>
-                            
-                    <!-- 
-                    <ul class="nav navbar-nav navbar-right">
-                        <li>
-                        </li>
-                    </ul>
-                    -->
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
+    <?php include 'MVC/View/estrutura_site/footer.html'; ?>
 
-        <div class="container-fluid text-center">    
-            <div class="row content">
-
-                <!-- barra da esquerda -->
-                <div class="col-sm-2 sidenav">
-                    <!--
-                    <p><a href="#">Link</a></p>
-                    <p><a href="#">Link</a></p>
-                    <p><a href="#">Link</a></p>
-                    -->
-                </div>
-
-                <!-- centro da página (horizontalmente falando) -->
-                <div class="col-sm-8 text-left">
-                    <hr> 
-                    <h2>Bem vindo ao Sistema Servidor do App Gabinete Digital 2.0 da prefeitura de Caruaru.</h2>
-                    <hr>
-                    <h3>Escolha uma das opçoes do menu acima.</h3>
-                    <hr>
-                </div>
-
-                <!-- barra da direita -->
-                <div class="col-sm-2 sidenav">
-                    <!--
-                    <div class="well">
-                        <p>ADS 1</p>
-                    </div>
-                    <div class="well">
-                        <p>ADS 2</p>
-                    </div>
-                    <div class="well">
-                        <p>ADS 3</p>
-                    </div>
-                    <div class="well">
-                        <p>ADS 4</p>
-                    </div>
-                    -->
-                </div>
-            </div>
-        </div>
-
-        <!-- fim da página -->
-        <footer class="container-fluid text-center">
-            <p>Prefeitura Municipal de Caruaru | Todos os Direitos Reservados | Desenvolvido por Universidade de Pernambuco (FACITEC)</p>
-        </footer>
-
-    </body>
+</body>
 </html>

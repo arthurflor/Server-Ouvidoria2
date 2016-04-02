@@ -1,26 +1,29 @@
 <?php
-    include '../regras_de_negocio/erros_php.php'; //mostra os erros de php da pagina
+    include '../../MVC/Model/erros_php/erros_php.php'; //mostra os erros de php da pagina
     $categoria_desta_pagina = 2;
+
+    $titulo_da_pagina = 'Reclamacoes de Direitos Humanos - Ouvidoria 2.0';
+    $pasta_raiz_site = '../../';
+    $pasta_reclamacoes = '../';
+    $pasta_graficos = '../../graficos/';
+
+    include '../../MVC/Controller/reclamacoes/ControladorListaReclamacoes.php';
+    $controlador = new ControladorListaReclamacoes();
+    $retorno_controlador = $controlador->executar_controlador($categoria_desta_pagina);
 ?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <?php
-            include '../view/head.html'; //cabecalho
-        ?>
+        <?php include '../../MVC/View/estrutura_site/head.php'; //cabecalho ?>
     </head>
     <body>
         
-        <?php
-            include '../view/navbar.html'; //navbar (menu)
-        ?>
+        <?php include '../../MVC/View/estrutura_site/navbar.php'; //navbar (menu) ?>
 
         <div class="container-fluid text-center">    
             <div class="row content">
                 
-                <?php
-                    include '../view/barra_esquerda.html';
-                ?>
+                <?php include '../../MVC/View/estrutura_site/barra_esquerda.html'; ?>
                 
                 <!-- Centro da página (horizontalmente falando) ira listar as reclamaçoes -->
                 <div class="col-sm-10 text-left">
@@ -43,19 +46,12 @@
                                         </select>
                                     </div>
                                 </div>
-                                <?php
-                                    include '../view/componentes_formulario.html';
-                                ?>
+                                <?php include '../../MVC/View/reclamacoes/componentes_formulario.html'; ?>
                             </div>
                             <button class="btn btn-primary" type="submit">Pesquisar!</button>
 
                         </form>
-                        <br>    
-                        <?php
-                            include '../regras_de_negocio/regras_lista.php'; //regra de negocio
-                            $negocioDH = new RegrasNegocioLista();
-                            $negocioDH->receberDados($categoria_desta_pagina);
-                        ?>
+                        <br>
                         <ul class="nav nav-tabs">
                             <li class="active"><a data-toggle="tab" href="#tabela">Tabela</a></li>
                             <li><a data-toggle="tab" href="#listar">Listagem</a></li>
@@ -63,10 +59,10 @@
                         
                         <div class="tab-content">
                             <div id="tabela" class="tab-pane fade in active">
-                                <p><?php $negocioDH->gerarTabela(); ?></p>
+                                <p><?php $controlador->solicitar_tabela($retorno_controlador); ?></p>
                             </div>
                             <div id="listar" class="tab-pane fade">
-                                <p><?php $negocioDH->listarReclamacoes(); ?></p>
+                                <p><?php //$negocioDH->listarReclamacoes(); ?></p>
                             </div>
                         </div>
 
@@ -76,9 +72,7 @@
                                 <h4>Mapa de Reclamacoes:</h4>
                             </div>
                         </div>
-                        <?php 
-                            $negocioDH->criarMapaReclamacoes(); 
-                        ?>
+                        <?php $controlador->solicitar_mapa($retorno_controlador); ?>
                         <div class="row">
                             <div class="col-sm-3"></div>
                             <div class="col-sm-9">
@@ -89,18 +83,14 @@
                     </p>
                 </div>
                 
-                <?php
-                    include '../view/barra_direita.html';
-                ?>
+                <?php include '../../MVC/View/estrutura_site/barra_direita.html'; ?>
+
             </div>
         </div>
         
-        <script src="../../js/opcao_imprimir.js">
-        </script>
+        <script src="../../js/opcao_imprimir.js"></script>
 
-        <?php
-            include '../view/footer.html'; //rodape da pagina
-        ?>
+        <?php include '../../MVC/View/estrutura_site/footer.html'; //rodape da pagina ?>
 
     </body>
 </html>
