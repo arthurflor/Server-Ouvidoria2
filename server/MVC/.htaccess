@@ -1,0 +1,4 @@
+AuthType Basic
+AuthName "MVC"
+AuthUserFile "/home/appgd/.htpasswds/public_html/relatorios/MVC/passwd"
+require valid-user

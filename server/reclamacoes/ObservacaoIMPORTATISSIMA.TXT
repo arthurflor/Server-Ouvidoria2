@@ -1,1 +1,0 @@
-Lembrar de dar chmod 777 em todas essas pastas de temp quando for implementar o servidor na prefeitura.

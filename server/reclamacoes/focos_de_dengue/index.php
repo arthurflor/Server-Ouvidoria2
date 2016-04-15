@@ -36,7 +36,7 @@
                                 <div class="col-sm-1"></div>
                                 <div class="col-sm-2">
                                     <div class="form-group">
-                                        <label for="sel1">Subcategoria</label>
+                                        <label for="sel1">Subcategoria:</label>
                                         <select class="form-control" name="categoria" required>
                                             <option value="100">Focos de Dengue</option>
                                         </select>
@@ -58,7 +58,7 @@
                                 <p><?php $controlador->solicitar_tabela($retorno_controlador); ?></p>
                             </div>
                             <div id="listar" class="tab-pane fade">
-                                <p><?php //$negocioDengue->listarReclamacoes(); ?></p>
+                                <p><?php $controlador->solicitar_lista($retorno_controlador); ?></p>
                             </div>
                         </div>
 

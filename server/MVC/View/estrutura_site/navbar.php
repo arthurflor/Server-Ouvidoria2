@@ -2,6 +2,7 @@
 <div class="row">
     <div class="container-fluid">
         <a href="<?php echo $pasta_raiz_site; ?>">
+            <img src="<?php echo $pasta_raiz_site; ?>imagens/sisgd.png" alt="sisgd"/>
             <img src="<?php echo $pasta_raiz_site; ?>imagens/logo.png" alt="logo"/>
         </a>
     </div>
@@ -39,7 +40,6 @@
                       </ul>
                   </li>
 
-                  <li><a href="<?php echo $pasta_raiz_site; ?>administracao/">Administraçao</a></li>
                   <li><a href="<?php echo $pasta_raiz_site; ?>contato/">Contato</a></li>
                   <li><a href="<?php echo $pasta_raiz_site; ?>sobre/">Sobre</a></li>
               </ul>

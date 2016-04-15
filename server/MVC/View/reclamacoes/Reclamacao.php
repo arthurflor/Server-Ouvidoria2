@@ -55,8 +55,9 @@
 					                <img src="../../imagens/upload/'.$dados['imagem'].'" width="600" height="400" alt="img_reclamacao"/>
 					            </div>
 					        </div>
-						</div>
-						<hr>
+					    </h4>
+					</div>
+					<hr>
 				';
 		}
 
@@ -67,8 +68,7 @@
 						<div class="col-sm-10">
 							<div id="googleMap" style="width:500px;height:380px;"></div>
 						</div>
-					</div>
-				</div><!--finalizando a div do mapa-->';
+					</div>';
 		}
 
 		public function imprimir_botoes_exportar($exportar_csv, $nome_arquivo_csv){

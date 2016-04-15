@@ -4,7 +4,7 @@
 class ControladorListaReclamacoes {
 
 		private $modelo_lista;
-
+		private $erros;
 		/**
 		*	Algoritmo deste metodo:
 		*	
@@ -64,14 +64,14 @@ class ControladorListaReclamacoes {
 				$this->modelo_lista->imprimir_tabela();
 			} else {
 				include '../../MVC/View/reclamacoes/ErrosReclamacoes.php';
-				$erros = new ErrosReclamacoes();
+				$this->erros = new ErrosReclamacoes();
 
 				if($resultado_controlador==1){
-					$erros->categoria_invalida();
+					$this->erros->categoria_invalida();
 				} elseif ($resultado_controlador==2){
-					$erros->sem_registros();
+					$this->erros->sem_registros();
 				} elseif ($resultado_controlador==3){
-					$erros->pagina_nao_existe();
+					$this->erros->pagina_nao_existe();
 				}
 			}
 		}
@@ -81,14 +81,12 @@ class ControladorListaReclamacoes {
 			if($resultado_controlador==0){
 				$this->modelo_lista->imprimir_lista();
 			} else {
-				$erros = new ErrosReclamacoes();
-
 				if($resultado_controlador==1){
-					$erros->categoria_invalida();
+					$this->erros->categoria_invalida();
 				} elseif ($resultado_controlador==2){
-					$erros->sem_registros();
+					$this->erros->sem_registros();
 				} elseif ($resultado_controlador==3){
-					$erros->pagina_invalida();
+					$this->erros->pagina_nao_existe();
 				}
 			}
 		}
@@ -98,14 +96,12 @@ class ControladorListaReclamacoes {
 			if($resultado_controlador==0){
 				$this->modelo_lista->imprimir_mapa_reclamacoes();
 			} else {
-				$erros = new ErrosReclamacoes();
-
 				if($resultado_controlador==1){
-					$erros->categoria_invalida();
+					$this->erros->categoria_invalida();
 				} elseif ($resultado_controlador==2){
-					$erros->sem_registros();
+					$this->erros->sem_registros();
 				} elseif ($resultado_controlador==3){
-					$erros->pagina_invalida();
+					$this->erros->pagina_nao_existe();
 				}
 			}
 		}

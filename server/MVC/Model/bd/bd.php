@@ -14,14 +14,18 @@
          * Renan Félix.
          */
 	class bancoDeDados{
-		
-		
 		//informacoes do banco de dados local
 		private $servidor = "localhost";
 		private $usuario = "root";
 		private $senha = "iago2014";
 		private $banco = "ouvidoria_app";
-		
+	/*
+		//informacoes do banco de dados appgd
+		private $servidor = "localhost";
+		private $usuario = "appgd";
+		private $senha = "ligar2016TCJ";
+		private $banco = "appgd_2016";
+	*/	
 /*
 		private $servidor = "renanfelixrodrigues.com.br";
 		private $usuario = "renan549_1";

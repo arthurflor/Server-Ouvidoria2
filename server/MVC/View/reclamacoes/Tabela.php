@@ -55,7 +55,7 @@
 						Ou digite o numero da pagina que deseja: 
 							<div class="form-group">
 								<input type="text" class="form-control" id="outra_pagina">
-								<button class="btn btn-primary" id="botao_outra_pagina">Ir</a>
+								<a class="btn btn-primary" id="botao_outra_pagina">Ir</a>
 							</div>
 					</div>
 				</div>';

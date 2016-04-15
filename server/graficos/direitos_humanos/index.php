@@ -2,17 +2,21 @@
     include '../../MVC/Model/erros_php/erros_php.php'; //mostra os erros de php da pagina
     $categoria_desta_pagina = 2;
 
-    $titulo_da_pagina = 'Graficos de Reclamacoes de Direitos Humanos - Ouvidoria 2.0';
+    $titulo_da_pagina = 'Graficos de Reclamacoes de Direitos Humanos - SISGD 1.0 - Ouvidoria 2.0';
     $pasta_raiz_site = '../../';
     $pasta_reclamacoes = '../../reclamacoes/';
     $pasta_graficos = '../';
-?>
-<!DOCTYPE html>
-<html lang="en">
+
+    include '../../MVC/Controller/graficos/ControladorGraficos.php';
+    $controlador = new ControladorGraficos(); 
+    ?>
+    <!DOCTYPE html>
+    <html lang="en">
     <head>
         <?php include '../../MVC/View/estrutura_site/head.php'; //cabecalho ?>
 
-        <script src="../../js/alterna_div_graficos.js"> //alternacao de divs no formulario, de acordo com o radio button</script>
+        <!--<script src="../../js/alterna_div_graficos.js"> //alternacao de divs no formulario, de acordo com o radio button</script>
+        -->
         <script src="../../js/Chart.js"> //script dos graficos</script> 
     </head>
     <body>
@@ -21,7 +25,7 @@
 
         <div class="container-fluid text-center">    
             <div class="row content">
-                
+
                 <?php include '../../MVC/View/estrutura_site/barra_esquerda.html'; ?>
                 
                 <!-- Centro da página (horizontalmente falando) ira listar as reclamaçoes -->
@@ -32,7 +36,6 @@
                         <hr>
                         <form class="form-horizontal" role="form" method="GET" action="../direitos_humanos/">
                             <div class="row">
-                                <div class="col-sm-1"></div>
                                 <div class="col-sm-2">
                                     <div class="form-group">
                                         <label for="sel1">Subcategoria</label>
@@ -45,36 +48,20 @@
                                         </select>
                                     </div>
                                 </div>
+                                
                                 <?php include '../../MVC/View/graficos/componentes_formulario.html'; ?>
                             </div>
-                            <button class="btn btn-primary" type="submit">Gerar Relatorio</button>
+                            <div class="row">
+                                <button class="btn btn-primary" type="submit">Gerar Relatorio</button>
 
+                            </div>
                         </form>
                         <br>    
                         
                         <?php
-                            include '../regras_de_negocio/regras_relatorio.php'; //regra de negocio
-                            $negocioDH = new RegrasNegocioRelatorio();
-                            $negocioDH->receberDados($categoria_desta_pagina);
-                            $negocioDH->processarDados();
-                            $negocioDH->construirGrafico();
+                            $controlador->iniciar_controlador($categoria_desta_pagina);
                         ?>
 
-                        <hr>
-                        <div class="row">
-                            <div class="col-sm-3">
-                                <h4>Mapa de Reclamacoes:</h4>
-                            </div>
-                        </div>
-                        <?php 
-                            //$negocioDH->criarMapaReclamacoes(); 
-                        ?><!--
-                        <div class="row">
-                            <div class="col-sm-3"></div>
-                            <div class="col-sm-9">
-                                <div id="map" style="width:500px;height:380px;"></div>
-                            </div>
-                        </div>-->
                         <hr>
                     </p>
                 </div>
@@ -84,9 +71,8 @@
             </div>
         </div>
         
-        <script src="../../js/opcao_imprimir.js"></script>
+        <script src="../../js/canvas_pdf.js"></script>
 
         <?php include '../../MVC/View/estrutura_site/footer.html'; //rodape da pagina ?>
-
     </body>
 </html>

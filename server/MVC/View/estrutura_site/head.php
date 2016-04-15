@@ -10,6 +10,7 @@
 <link rel="stylesheet" href="<?php echo $pasta_raiz_site; ?>css/bootstrap.min.css">
 <!-- Esse style abaixo é para mudar a cor de alguns componentes, vem por padrão -->
 <link rel="stylesheet" href="<?php echo $pasta_raiz_site; ?>css/newStyle.css">
+<link rel="stylesheet" href="<?php echo $pasta_raiz_site; ?>css/linkStyle.css">
 
 <script src="<?php echo $pasta_raiz_site; ?>js/jquery.min.js"></script>
 <script src="<?php echo $pasta_raiz_site; ?>js/bootstrap.min.js"></script>

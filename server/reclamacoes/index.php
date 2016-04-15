@@ -1,129 +1,42 @@
 <?php
-    session_start(); //inicia sessão, para verificação de login
+    include '../../MVC/Model/erros_php/erros_php.php'; //mostra os erros de php da pagina
+
+    $titulo_da_pagina = 'Reclamacoes - SISGD 1.0 - Ouvidoria 2.0';
+    $pasta_raiz_site = '../';
+    $pasta_reclamacoes = '';
+    $pasta_graficos = '../graficos/';
 ?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <!-- página de Reclamações -->
-        <title>Reclamações - Ouvidoria 2.0</title>
-
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-
-        <link rel="stylesheet" href="../css/bootstrap.min.css">
-        <!-- Esse style abaixo é para mudar a cor de alguns componentes, vem por padrão -->
-        <link rel="stylesheet" href="../css/newStyle.css">
-        <link rel="stylesheet" href="../css/linkStyle.css">
-        
-        <script src="../js/jquery.min.js"></script>
-        <script src="../js/bootstrap.min.js"></script>
+       <?php include '../MVC/View/estrutura_site/head.php'; //cabecalho ?>
     </head>
     <body>
-        <!-- logo -->
-        <div class="row">
-            <div class="container-fluid">
-                <a href="../">
-                    <img src="../imagens/logo.png" alt="logo"/>
-                </a>
-            </div>
-        </div>
         
-        <!-- Barra de menu -->
-        <nav class="navbar navbar-inverse">
-            <div class="container-fluid">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>                        
-                    </button>
-                </div>
-                <div class="collapse navbar-collapse" id="myNavbar">
-                    <ul class="nav navbar-nav">
-                        <li><a href="../">Início</a></li>
-                        <li class="dropdown">
-                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">Reclamações
-                            <span class="caret"></span></a>
-                            <ul class="dropdown-menu">
-                              <li><a href="direitos_humanos/">Direitos Humanos</a></li>
-                              <li><a href="focos_de_dengue/">Focos de Dengue</a></li> 
-                              <li><a href="ouvidoria/">Ouvidoria</a></li> 
-                            </ul>
-                        </li>
-                        <li class="dropdown">
-                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">Relatórios
-                            <span class="caret"></span></a>
-                            <ul class="dropdown-menu">
-                              <li><a href="../relatorios/direitos_humanos/">Direitos Humanos</a></li>
-                              <li><a href="../relatorios/focos_de_dengue">Focos de Dengue</a></li> 
-                              <li><a href="../relatorios/ouvidoria">Ouvidoria</a></li> 
-                            </ul>
-                        </li>
-                        <li><a href="../contato/">Contato</a></li>
-                    </ul>
-                    <!-- 
-                    <ul class="nav navbar-nav navbar-right">
-                        <li>
-                        </li>
-                    </ul>
-                    -->
-                </div>
-            </div>
-        </nav>
-
-        <div class="container-fluid text-center" id="id_da_div">    
+        <?php include '../MVC/View/estrutura_site/navbar.php'; //navbar (menu) ?>
+        
+        <div class="container-fluid text-center">    
             <div class="row content">
                 
-                <!-- barra da esquerda -->
-                <div class="col-sm-2 sidenav">
-                    <p><a href="#">Link</a></p>
-                    <p><a href="#">Link</a></p>
-                    <p><a href="#">Link</a></p>
-                </div>
+                <?php include '../MVC/View/estrutura_site/barra_esquerda.html'; ?>
                 
                 <!-- centro da página (horizontalmente falando) -->
-                <div class="col-sm-8 text-left"> 
-                    <h2>Escolha uma categoria:</h2>
-                    <h3><a href="direitos_humanos/" class="effect-1">Direitos Humanos</a></h3>
-                    <h3><a href="focos_de_dengue/" class="effect-1">Focos de Dengue</a></h3>
-                    <h3><a href="ouvidoria/" class="effect-1">Ouvidoria</a></h3>
+                <div class="col-sm-10 text-left"> 
+                    <hr>
+                    <h2>Reclamacoes - Escolha uma categoria:</h2>
+                    <hr>
+                    <h3><a href="direitos_humanos/?categoria=35&itens=5" class="effect-1 a_h3">Direitos Humanos</a></h3>
+                    <h3><a href="focos_de_dengue/?categoria=100&itens=5" class="effect-1 a_h3">Focos de Dengue</a></h3>
+                    <h3><a href="ouvidoria/?categoria=30&itens=5" class="effect-1 a_h3">Ouvidoria</a></h3>
+                    <hr>
                 </div>
                 
-                <!-- barra da direita -->
-                <div class="col-sm-2 sidenav">
-                    <div class="well">
-                        <p>ADS 1</p>
-                    </div>
-                    <div class="well">
-                        <p>ADS 2</p>
-                    </div>
-                    <div class="well">
-                        <p>ADS 3</p>
-                    </div>
-                    <div class="well">
-                        <p>ADS 4</p>
-                    </div>
-                </div>
+                <?php include '../MVC/View/estrutura_site/barra_direita.html'; ?>
+
             </div>
         </div>
         
-        
-        <!-- Esse script manda o conteúdo de uma div para impressão-->
-        <script>
-            document.getElementById('id_do_button').onclick = function() {
-                var conteudo = document.getElementById('id_da_div').innerHTML,
-                    tela_impressao = window.open('about:blank');
-
-                tela_impressao.document.write(conteudo);
-                tela_impressao.window.print();
-                tela_impressao.window.close();
-            };
-        </script>
-        
-        <!-- fim da página -->
-        <footer class="container-fluid text-center">
-            <p>Prefeitura Municipal de Caruaru | Todos os Direitos Reservados | Desenvolvido por Universidade de Pernambuco (FACITEC)</p>
-        </footer>
+        <?php include '../MVC/View/estrutura_site/footer.html'; //rodape da pagina ?>
 
     </body>
 </html>

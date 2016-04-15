@@ -65,6 +65,7 @@
 				$reclamacao->processar_reclamacao($dados); //processando a reclamação
 				$reclamacao->imprimir_reclamacao(); //imprimindo na tela a reclamação
 				$reclamacao->imprimir_mapa(); //gerando o mapa da reclamação
+				$reclamacao->imprimir_fim_reclamacao();
 				$arquivo_csv .= $dados['id'].','.$dados['user_nome'].','.$dados['user_email'].','.$dados['user_idade'].','.$dados['user_genero'].','.$dados['texto'].','.$dados['data'].','.$dados['categoria'].','.$dados['latitude'].','.$dados['longitude']."\n"; //escrevendo os dados da reclamação no CSV
 				$exportar_para_csv = "sim";
 				fwrite($ponteiro, $arquivo_csv); //escrevendo no arquivo CSV
