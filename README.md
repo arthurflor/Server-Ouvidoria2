@@ -6,7 +6,7 @@ Março:<br>
 [x] Banco de dados; - Iago e Leylane<br>
 [x] Web Service (para recebimento das informações de uma reclamação); - Iago e Leylane<br><br>
 Abril:<br>
-[x] <b>Login;</b> - Iago e Leylane<br>
+[x] Login; - Iago e Leylane<br>
 [x] Lista de reclamações por filtro e mapa com essas reclamações; - Iago e Leylane<br>
 [x] Ver cada reclamação individualmente, com cada informação enviada pelo cliente, com opção de enviar para impressão ou exportar para excel. - Iago e Leylane<br>
 [x] Gerar gráficos com informações de reclamações. A partir da escolha de uma categoria de reclamação e um outro filtro o relatório será gerado com um gráfico de barras. Irá ter uma opção para enviar para impressão. - Iago e Leylane
